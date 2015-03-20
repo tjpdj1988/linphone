@@ -15,7 +15,8 @@ UI_FILES=	about.ui \
 		ldap.ui \
 		config-uri.ui \
 		provisioning-fetch.ui \
-		audio_assistant.ui
+		audio_assistant.ui \
+		elophone_menu.ui
 
 PIXMAPS=	\
 		stock_people.png

@@ -1901,13 +1901,21 @@ void linphone_gtk_create_keypad(GtkWidget *button){
 	gtk_widget_show(keypad);
 }
 
+static void elophone_menu_init(void) {
+	GtkWidget *main_window = linphone_gtk_get_main_window();
+	GtkWidget *menu = linphone_gtk_create_widget("elophone_menu", "elophone_menu");
+	gtk_object_set_data(GTK_OBJECT(main_window), "elophone_menu", menu);
+	gtk_object_weakref(GTK_OBJECT(main_window), (GDestroyNotify)gtk_widget_destroy, menu);
+}
+
 static void linphone_gtk_init_main_window(){
 	GtkWidget *main_window;
 	linphone_gtk_configure_main_window();
 	linphone_gtk_manage_login();
 	load_uri_history();
 	linphone_gtk_load_identities();
-	linphone_gtk_set_my_presence(linphone_core_get_presence_info(linphone_gtk_get_core()));
+// 	linphone_gtk_set_my_presence(linphone_core_get_presence_info(linphone_gtk_get_core()));
+	elophone_menu_init();
 	linphone_gtk_show_friends();
 	linphone_core_reset_missed_calls_count(linphone_gtk_get_core());
 	main_window=linphone_gtk_get_main_window();
