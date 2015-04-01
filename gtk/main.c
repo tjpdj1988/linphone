@@ -343,8 +343,18 @@ static void linphone_gtk_configure_window(GtkWidget *w, const char *window_name)
 	if (icon_path) {
 		GdkPixbuf *pbuf=create_pixbuf(icon_path);
 		if(pbuf != NULL) {
-			gtk_window_set_icon(GTK_WINDOW(w),pbuf);
+			GList *pbuf_list = NULL;
+			GdkPixbuf *pbuf_16=gdk_pixbuf_scale_simple(pbuf, 16, 16, GDK_INTERP_BILINEAR);
+			GdkPixbuf *pbuf_32=gdk_pixbuf_scale_simple(pbuf, 32, 32, GDK_INTERP_BILINEAR);
+			pbuf_list = g_list_append(pbuf_list, pbuf);
+			pbuf_list = g_list_append(pbuf_list, pbuf_16);
+			pbuf_list = g_list_append(pbuf_list, pbuf_32);
+			gtk_window_set_icon_list(GTK_WINDOW(w), pbuf_list);
+			gtk_window_set_default_icon_list(pbuf_list);
+			g_object_unref(G_OBJECT(pbuf_16));
+			g_object_unref(G_OBJECT(pbuf_32));
 			g_object_unref(G_OBJECT(pbuf));
+			g_list_free(pbuf_list);
 		}
 	}
 }
@@ -2107,8 +2117,11 @@ int main(int argc, char *argv[]){
 	/*for pulseaudio:*/
 	g_setenv("PULSE_PROP_media.role", "phone", TRUE);
 #endif
-
-	if ((lang=linphone_gtk_get_lang(config_file))!=NULL && lang[0]!='\0'){
+	lang=linphone_gtk_get_lang(config_file);
+	if (lang == NULL || lang[0]=='\0'){
+		lang = getenv("LANG");
+	}
+	if (lang && lang[0]!='\0'){
 #ifdef WIN32
 		char tmp[128];
 		snprintf(tmp,sizeof(tmp),"LANG=%s",lang);
@@ -2241,6 +2254,10 @@ core_start:
 	if (icon) gtk_status_icon_set_visible(icon,FALSE);
 #endif
 	free(progpath);
+	/*output a translated "hello" string to the terminal, which allows the builder to check that translations are working.*/
+	if (selftest){
+		printf(_("Hello\n"));
+	}
 	return 0;
 }
 

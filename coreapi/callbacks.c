@@ -161,7 +161,7 @@ void linphone_core_update_streams(LinphoneCore *lc, LinphoneCall *call, SalMedia
 							linphone_core_enable_mic(lc, linphone_core_mic_enabled(lc));
 #ifdef VIDEO_ENABLED
 						if (call->videostream && call->camera_enabled)
-							video_stream_change_camera(call->videostream,lc->video_conf.device );
+							video_stream_change_camera(call->videostream,linphone_call_get_video_device(call));
 #endif
 					}
 					/*FIXME ZRTP, might be restarted in any cases ? */
@@ -197,6 +197,15 @@ void linphone_core_update_streams(LinphoneCore *lc, LinphoneCall *call, SalMedia
 	if (call->params->real_early_media && call->state==LinphoneCallOutgoingEarlyMedia){
 		prepare_early_media_forking(call);
 	}
+#ifdef VIDEO_ENABLED
+	if (call->state==LinphoneCallPausing) {
+		/*change cam to noweb cam*/
+		call->cam = get_nowebcam_device();
+	} else if (call->state != LinphoneCallPaused) {
+		/*restaure web cam*/
+		call->cam = lc->video_conf.device;
+	}
+#endif /*VIDEO*/
 	linphone_call_start_media_streams(call,all_muted,send_ringbacktone);
 	if (call->state==LinphoneCallPausing && call->paused_by_app && ms_list_size(lc->calls)==1){
 		linphone_core_play_named_tone(lc,LinphoneToneCallOnHold);
@@ -432,7 +441,11 @@ static void call_ringing(SalOp *h){
 		linphone_call_set_state(call,LinphoneCallOutgoingRinging,"Remote ringing");
 	}else{
 		/*accept early media */
-		if (call->audiostream && audio_stream_started(call->audiostream)){
+		if ((call->audiostream && audio_stream_started(call->audiostream))
+#ifdef VIDEO_ENABLED
+			|| (call->videostream && video_stream_started(call->videostream))
+#endif
+			) {
 			/*streams already started */
 			try_early_media_forking(call,md);
 			#ifdef VIDEO_ENABLED
@@ -487,8 +500,6 @@ static void call_accepted(SalOp *op){
 #endif //BUILD_UPNP
 
 	md=sal_call_get_final_media_description(op);
-	if (md) /*make sure re-invite will not propose video again*/
-		call->params->has_video &= linphone_core_media_description_contains_video_stream(md);
 
 	switch (call->state){
 		case LinphoneCallOutgoingProgress:

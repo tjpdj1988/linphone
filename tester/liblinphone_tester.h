@@ -22,7 +22,7 @@
 
 
 
-#include "common/bc_tester_utils.h"
+#include "bc_tester_utils.h"
 #include "linphonecore.h"
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -202,6 +202,7 @@ typedef struct _stats {
 	char * dtmf_list_received;
 	int dtmf_count;
 
+	int number_of_LinphoneCallStatsUpdated;
 	int number_of_rtcp_sent;
 	int number_of_rtcp_received;
 
@@ -211,6 +212,10 @@ typedef struct _stats {
 	int number_of_LinphoneCoreLogCollectionUploadStateDelivered;
 	int number_of_LinphoneCoreLogCollectionUploadStateNotDelivered;
 	int number_of_LinphoneCoreLogCollectionUploadStateInProgress;
+	int audio_download_bandwidth;
+	int audio_upload_bandwidth;
+	int video_download_bandwidth;
+	int video_upload_bandwidth;
 
 }stats;
 
@@ -230,6 +235,8 @@ typedef struct _LinphoneCallTestParams {
 	bool_t sdp_simulate_error;
 } LinphoneCallTestParams;
 
+
+void liblinphone_tester_add_suites();
 
 LinphoneCoreManager* linphone_core_manager_init(const char* rc_file);
 void linphone_core_manager_start(LinphoneCoreManager *mgr, const char* rc_file, int check_for_proxies);
@@ -295,6 +302,7 @@ void liblinphone_tester_enable_ipv6(bool_t enabled);
 void linphone_call_cb(LinphoneCall *call,void * user_data);
 void call_paused_resumed_base(bool_t multicast);
 void simple_call_base(bool_t enable_multicast_recv_side);
+void call_base_with_configfile(LinphoneMediaEncryption mode, bool_t enable_video,bool_t enable_relay,LinphoneFirewallPolicy policy,bool_t enable_tunnel, const char *marie_rc, const char *pauline_rc);
 void call_base(LinphoneMediaEncryption mode, bool_t enable_video,bool_t enable_relay,LinphoneFirewallPolicy policy,bool_t enable_tunnel);
 bool_t call_with_caller_params(LinphoneCoreManager* caller_mgr,LinphoneCoreManager* callee_mgr, const LinphoneCallParams *params);
 bool_t pause_call_1(LinphoneCoreManager* mgr_1,LinphoneCall* call_1,LinphoneCoreManager* mgr_2,LinphoneCall* call_2);

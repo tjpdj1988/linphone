@@ -2892,6 +2892,21 @@ extern "C" jobject Java_org_linphone_core_LinphoneFriendImpl_getCore(JNIEnv*  en
 	}
 	return NULL;
 }
+extern "C" void Java_org_linphone_core_LinphoneFriendImpl_setRefKey(JNIEnv*  env
+																		,jobject  thiz
+																		,jlong ptr
+																		,jstring jkey) {
+	const char* key = env->GetStringUTFChars(jkey, NULL);
+	linphone_friend_set_ref_key((LinphoneFriend*)ptr,key);
+	env->ReleaseStringUTFChars(jkey, key);
+}
+extern "C" jstring Java_org_linphone_core_LinphoneFriendImpl_getRefKey(JNIEnv*  env
+																		,jobject  thiz
+																		,jlong ptr) {
+	const char * key = linphone_friend_get_ref_key((LinphoneFriend *)ptr);
+    return key ? env->NewStringUTF(key) : NULL;
+}
+
 
 /*
  * Class:     org_linphone_core_LinphoneFriendImpl
@@ -4586,7 +4601,6 @@ static LinphoneBuffer* create_c_linphone_buffer_from_java_linphone_buffer(JNIEnv
 	getDataMethod = env->GetMethodID(bufferClass, "getContent", "()[B");
 	
 	jsize = env->CallIntMethod(jbuffer, getSizeMethod);
-	ms_error("Fetched %i bytes", jsize);
 	jdata = env->CallObjectMethod(jbuffer, getDataMethod);
 	jcontent = reinterpret_cast<jbyteArray>(jdata);
 	content = (uint8_t*)env->GetByteArrayElements(jcontent, NULL);

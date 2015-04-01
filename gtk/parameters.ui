@@ -286,7 +286,7 @@
                             </child>
                             <child>
                               <object class="GtkCheckButton" id="ipv6_enabled">
-                                <property name="label" translatable="yes">Use IPv6 instead of IPv4</property>
+                                <property name="label" translatable="yes">Allow IPv6</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
@@ -728,6 +728,9 @@
                                 <property name="top_attach">6</property>
                                 <property name="bottom_attach">7</property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                         </child>
@@ -1929,6 +1932,44 @@
                     <property name="position">2</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkFrame" id="auto_answer_frame">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label_xalign">0</property>
+                    <property name="shadow_type">none</property>
+                    <child>
+                      <object class="GtkAlignment" id="alignment7">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="left_padding">12</property>
+                        <child>
+                          <object class="GtkCheckButton" id="auto_answer_checkbox">
+                            <property name="label" translatable="yes">Automatically answer when a call is received</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="linphone_gtk_enable_auto_answer" swapped="no"/>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel" id="label7">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">&lt;b&gt;Auto-answer&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="position">2</property>
@@ -2388,62 +2429,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTable" id="call_params_tab">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="n_rows">3</property>
-                <property name="n_columns">3</property>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="auto_answer">
-                    <property name="label" translatable="yes">Automatically answer when a call is received</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="linphone_gtk_enable_auto_answer" swapped="no"/>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="position">4</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="label6">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Call parameters</property>
-              </object>
-              <packing>
-                <property name="position">4</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkVBox" id="user_interface_tab">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -2651,7 +2636,6 @@
                               <object class="GtkLabel" id="ldap_server">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label">label</property>
                               </object>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -2663,7 +2647,6 @@
                               <object class="GtkLabel" id="ldap_auth_method">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label">label</property>
                               </object>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -2677,7 +2660,6 @@
                               <object class="GtkLabel" id="ldap_username">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label">label</property>
                               </object>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -2747,6 +2729,12 @@
                 <property name="position">6</property>
                 <property name="tab_fill">False</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <placeholder/>
             </child>
           </object>
           <packing>

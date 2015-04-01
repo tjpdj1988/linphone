@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "lpconfig.h"
 #include "private.h"
 #include "quality_reporting.h"
+#include "lime.h"
 
 #include <math.h>
 #include <sys/types.h>
@@ -170,6 +171,10 @@ void linphone_core_set_log_file(FILE *file) {
 }
 
 void linphone_core_set_log_level(OrtpLogLevel loglevel) {
+	linphone_core_set_log_level_mask(loglevel);
+}
+
+void linphone_core_set_log_level_mask(OrtpLogLevel loglevel) {
 	ortp_set_log_level_mask(loglevel);
 	if (loglevel == 0) {
 		sal_disable_logs();
@@ -1094,7 +1099,7 @@ static bool_t get_codec(LinphoneCore *lc, SalStreamType type, int index, Payload
 		MSList **default_list=(type==SalAudio) ? &lc->default_audio_codecs :  &lc->default_video_codecs;
 		if (type==SalAudio)
 			ms_warning("Codec %s/%i/%i read from conf is not in the default list.",mime,rate,channels);
-		else
+		else 
 			ms_warning("Codec %s/%i read from conf is not in the default list.",mime,rate);
 		pt=payload_type_new();
 		pt->type=(type==SalAudio) ? PAYLOAD_AUDIO_PACKETIZED :  PAYLOAD_VIDEO;
@@ -1164,14 +1169,18 @@ static void codecs_config_read(LinphoneCore *lc)
 			audio_codecs=codec_append_if_new(audio_codecs, pt);
 		}
 	}
-	audio_codecs=add_missing_codecs(lc->default_audio_codecs,audio_codecs);
+	if( lp_config_get_int(lc->config, "misc", "add_missing_audio_codecs", 1) == 1 ){
+		audio_codecs=add_missing_codecs(lc->default_audio_codecs,audio_codecs);
+	}
 
 	for (i=0;get_codec(lc,SalVideo,i,&pt);i++){
 		if (pt){
 			video_codecs=codec_append_if_new(video_codecs, pt);
 		}
 	}
-	video_codecs=add_missing_codecs(lc->default_video_codecs,video_codecs);
+	if( lp_config_get_int(lc->config, "misc", "add_missing_video_codecs", 1) == 1 ){
+		video_codecs=add_missing_codecs(lc->default_video_codecs,video_codecs);
+	}
 	linphone_core_set_audio_codecs(lc,audio_codecs);
 	linphone_core_set_video_codecs(lc,video_codecs);
 	linphone_core_update_allocated_audio_bandwidth(lc);
@@ -1313,7 +1322,7 @@ void linphone_core_set_adaptive_rate_algorithm(LinphoneCore *lc, const char* alg
  * See linphone_core_set_adaptive_rate_algorithm().
 **/
 const char * linphone_core_get_adaptive_rate_algorithm(const LinphoneCore *lc){
-	return lp_config_get_string(lc->config, "net", "adaptive_rate_algorithm", "Stateful");
+	return lp_config_get_string(lc->config, "net", "adaptive_rate_algorithm", "Simple");
 }
 
 bool_t linphone_core_rtcp_enabled(const LinphoneCore *lc){
@@ -1564,7 +1573,7 @@ static void linphone_core_register_default_codecs(LinphoneCore *lc){
 	const char *aac_fmtp162248, *aac_fmtp3244;
 	bool_t opus_enabled=TRUE;
 	/*default enabled audio codecs, in order of preference*/
-#ifdef __arm__
+#if defined(__arm__) || defined(_M_ARM)
 	/*hack for opus, that needs to be disabed by default on ARM single processor, otherwise there is no cpu left for video processing*/
 	if (ms_get_cpu_count()==1) opus_enabled=FALSE;
 #endif
@@ -1645,10 +1654,9 @@ static void linphone_core_init(LinphoneCore * lc, const LinphoneCoreVTable *vtab
 	ms_init();
 
 	linphone_core_register_default_codecs(lc);
-	/* create a mediastreamer2 event queue and set it as global */
+	/* Get the mediastreamer2 event queue */
 	/* This allows to run event's callback in linphone_core_iterate() */
-	lc->msevq=ms_event_queue_new();
-	ms_set_global_event_queue(lc->msevq);
+	lc->msevq=ms_factory_get_event_queue(ms_factory_get_fallback());
 
 	lc->sal=sal_init();
 
@@ -1753,12 +1761,21 @@ int linphone_core_set_primary_contact(LinphoneCore *lc, const char *contact)
 {
 	LinphoneAddress *ctt;
 
+	if( lc->sip_conf.contact != NULL && strcmp(lc->sip_conf.contact, contact) == 0){
+		/* changing for the same contact: no need to do anything */
+		return 0;
+	}
+
 	if ((ctt=linphone_address_new(contact))==0) {
 		ms_error("Bad contact url: %s",contact);
 		return -1;
 	}
+
 	if (lc->sip_conf.contact!=NULL) ms_free(lc->sip_conf.contact);
 	lc->sip_conf.contact=ms_strdup(contact);
+	lp_config_set_string(lc->config, "sip", "contact", lc->sip_conf.contact);
+
+	/* clean the guessed contact, we have to regenerate it */
 	if (lc->sip_conf.guessed_contact!=NULL){
 		ms_free(lc->sip_conf.guessed_contact);
 		lc->sip_conf.guessed_contact=NULL;
@@ -1842,7 +1859,7 @@ void linphone_core_enable_lime(LinphoneCore *lc, bool_t val){
 }
 
 bool_t linphone_core_lime_enabled(const LinphoneCore *lc){
-	return lp_config_get_int(lc->config,"sip", "lime", FALSE);
+	return (lp_config_get_int(lc->config,"sip", "lime", FALSE) && lime_is_available());
 }
 
 /**
@@ -3114,6 +3131,7 @@ void linphone_configure_op(LinphoneCore *lc, SalOp *op, const LinphoneAddress *d
 			sal_address_destroy(new_contact);
 		}
 	}
+	sal_op_cnx_ip_to_0000_if_sendonly_enable(op,lp_config_get_default_int(lc->config,"sip","cnx_ip_to_0000_if_sendonly_enabled",0)); /*also set in linphone_call_new_incoming*/
 }
 
 /**
@@ -3638,7 +3656,6 @@ int _linphone_core_accept_call_update(LinphoneCore *lc, LinphoneCall *call, cons
 		ms_warning("Video isn't supported in conference");
 		call->params->has_video = FALSE;
 	}
-	call->params->has_video &= linphone_core_media_description_contains_video_stream(remote_desc);
 	linphone_call_init_media_streams(call); /*so that video stream is initialized if necessary*/
 	if (call->ice_session != NULL) {
 		if (linphone_call_prepare_ice(call,TRUE)==1)
@@ -4157,6 +4174,9 @@ int linphone_core_get_inc_timeout(LinphoneCore *lc){
 **/
 void linphone_core_set_in_call_timeout(LinphoneCore *lc, int seconds){
 	lc->sip_conf.in_call_timeout=seconds;
+	if( linphone_core_ready(lc)){
+		lp_config_set_int(lc->config, "sip", "in_call_timeout", seconds);
+	}
 }
 
 /**
@@ -4808,7 +4828,7 @@ static void linphone_core_mute_audio_stream(LinphoneCore *lc, AudioStream *st, b
 	} else {
 		audio_stream_set_mic_gain_db(st, lc->sound_conf.soft_mic_lev);
 	}
-
+	
 	if ( linphone_core_get_rtp_no_xmit_on_audio_mute(lc) ){
 		audio_stream_mute_rtp(st,val);
 	}
@@ -6322,7 +6342,6 @@ static void linphone_core_uninit(LinphoneCore *lc)
 	}
 #endif
 
-	ms_event_queue_destroy(lc->msevq);
 	lc->msevq=NULL;
 	/* save all config */
 	ui_config_uninit(lc);
@@ -6885,9 +6904,7 @@ const char *linphone_media_encryption_to_string(LinphoneMediaEncryption menc){
 	return "INVALID";
 }
 
-/**
- * Returns whether a media encryption scheme is supported by the LinphoneCore engine
-**/
+
 bool_t linphone_core_media_encryption_supported(const LinphoneCore *lc, LinphoneMediaEncryption menc){
 	switch(menc){
 		case LinphoneMediaEncryptionSRTP:
