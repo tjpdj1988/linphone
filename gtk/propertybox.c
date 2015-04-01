@@ -1469,7 +1469,7 @@ void linphone_gtk_show_parameters(void){
 	int min_port = 0, max_port = 0;
 
 	if (pb==NULL) {
-		pb=linphone_gtk_create_window("parameters");
+		pb=linphone_gtk_create_window("elophone_parameters");
 		g_object_set_data(G_OBJECT(mw),"parameters",pb);
 	}else {
 		gtk_widget_show(pb);
