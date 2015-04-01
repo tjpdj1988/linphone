@@ -374,7 +374,7 @@ static void linphone_gtk_chat_add_contact(const LinphoneAddress *addr){
 }
 
 GtkWidget* linphone_gtk_init_chatroom(LinphoneChatRoom *cr, const LinphoneAddress *with){
-	GtkWidget *chat_view=linphone_gtk_create_widget("main","chatroom_frame");
+	GtkWidget *chat_view=linphone_gtk_create_widget("elophone_main","chatroom_frame");
 	GtkWidget *main_window=linphone_gtk_get_main_window();
 	GtkNotebook *notebook=(GtkNotebook *)linphone_gtk_get_widget(main_window,"viewswitch");
 	GtkWidget *text=linphone_gtk_get_widget(chat_view,"textview");

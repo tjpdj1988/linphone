@@ -1916,6 +1916,13 @@ static void elophone_menu_init(void) {
 	gtk_object_weakref(GTK_OBJECT(main_window), (GDestroyNotify)gtk_widget_destroy, menu);
 }
 
+void elophone_menu_clicked(GtkWidget *button){
+	GtkWidget *menu=(GtkWidget*)g_object_get_data(G_OBJECT(linphone_gtk_get_main_window()),"elophone_menu");
+	gtk_menu_popup(GTK_MENU(menu),NULL,NULL,NULL,NULL,0,
+			gtk_get_current_event_time());
+	gtk_widget_show(menu);
+}
+
 static void linphone_gtk_init_main_window(){
 	GtkWidget *main_window;
 	linphone_gtk_configure_main_window();
@@ -2225,7 +2232,7 @@ core_start:
 		return 0;
 	}
 
-	the_ui=linphone_gtk_create_window("main");
+	the_ui=linphone_gtk_create_window("elophone_main");
 
 	g_object_set_data(G_OBJECT(the_ui),"is_created",GINT_TO_POINTER(FALSE));
 

@@ -464,7 +464,7 @@ void linphone_gtk_set_my_presence(LinphoneOnlineStatus ss){
 }
 
 void linphone_gtk_my_presence_clicked(GtkWidget *button){
-	GtkWidget *menu=(GtkWidget*)g_object_get_data(G_OBJECT(linphone_gtk_get_main_window()),"elophone_menu");
+	GtkWidget *menu=(GtkWidget*)g_object_get_data(G_OBJECT(linphone_gtk_get_main_window()),"presence_menu");
 	gtk_menu_popup(GTK_MENU(menu),NULL,NULL,NULL,NULL,0,
 			gtk_get_current_event_time());
 	gtk_widget_show(menu);

@@ -16,7 +16,8 @@ UI_FILES=	about.ui \
 		config-uri.ui \
 		provisioning-fetch.ui \
 		audio_assistant.ui \
-		elophone_menu.ui
+		elophone_menu.ui \
+		elophone_main.ui
 
 PIXMAPS=	\
 		stock_people.png
