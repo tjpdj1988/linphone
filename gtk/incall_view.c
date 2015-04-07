@@ -525,6 +525,7 @@ void linphone_gtk_in_call_view_set_incoming(LinphoneCall *call){
 	gtk_label_set_markup(GTK_LABEL(status),_("<b>Incoming call</b>"));
 	gtk_widget_show_all(linphone_gtk_get_widget(callview,"answer_decline_panel"));
 	gtk_widget_hide(linphone_gtk_get_widget(callview,"buttons_panel"));
+	gtk_widget_hide(linphone_gtk_get_widget(callview, "hidden_buttons"));
 	display_peer_name_in_label(callee,linphone_call_get_remote_address (call));
 
 	answer_button=linphone_gtk_get_widget(callview,"accept_call");
@@ -752,8 +753,8 @@ void linphone_gtk_in_call_view_set_in_call(LinphoneCall *call){
 		gtk_widget_set_sensitive(linphone_gtk_get_widget(callview,"hold_call"),TRUE);
 	}
 	gtk_widget_show_all(linphone_gtk_get_widget(callview,"buttons_panel"));
-	if (!in_conf) gtk_widget_show_all(linphone_gtk_get_widget(callview,"record_hbox"));
-	else gtk_widget_hide(linphone_gtk_get_widget(callview,"record_hbox"));
+// 	if (!in_conf) gtk_widget_show_all(linphone_gtk_get_widget(callview,"record_hbox"));
+// 	else gtk_widget_hide(linphone_gtk_get_widget(callview,"record_hbox"));
 	if (call_stats) show_used_codecs(call_stats,call);
 }
 
