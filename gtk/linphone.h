@@ -239,6 +239,7 @@ LINPHONE_PUBLIC void on_proxy_refresh_button_clicked(GtkWidget *w);
 LINPHONE_PUBLIC void linphone_gtk_link_to_website(GtkWidget *item);
 LINPHONE_PUBLIC void linphone_gtk_options_activate(GtkWidget *item);
 LINPHONE_PUBLIC void linphone_gtk_create_keypad(GtkWidget *button);
+LINPHONE_PUBLIC void elophone_init_keypad(GtkWidget *keypad);
 
 LINPHONE_PUBLIC void linphone_gtk_keyword_changed(GtkEditable *e);
 LINPHONE_PUBLIC void linphone_gtk_buddy_lookup_contact_activated(GtkWidget *treeview);

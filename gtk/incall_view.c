@@ -407,6 +407,9 @@ void linphone_gtk_create_in_call_view(LinphoneCall *call){
 	gtk_button_set_label(GTK_BUTTON(button),_("Hang up"));
 	gtk_button_set_image(GTK_BUTTON(button),image);
 	gtk_widget_show(image);
+	
+	elophone_init_keypad(call_view);
+	
 	g_signal_connect_swapped(G_OBJECT(linphone_gtk_get_widget(call_view,"quality_indicator")),"button-press-event",(GCallback)linphone_gtk_show_call_stats,call);
 }
 
@@ -479,7 +482,7 @@ void linphone_gtk_remove_in_call_view(LinphoneCall *call){
 		}else gtk_notebook_prev_page(GTK_NOTEBOOK(nb));
 	}else{
 		/*show the active call*/
-		gtk_notebook_set_current_page(GTK_NOTEBOOK(nb),gtk_notebook_page_num(GTK_NOTEBOOK(nb),                                                                     linphone_call_get_user_pointer(call)));
+		gtk_notebook_set_current_page(GTK_NOTEBOOK(nb),gtk_notebook_page_num(GTK_NOTEBOOK(nb), linphone_call_get_user_pointer(call)));
 	}
 	gtk_notebook_remove_page (GTK_NOTEBOOK(nb),idx);
 	gtk_widget_destroy(w);
@@ -526,6 +529,7 @@ void linphone_gtk_in_call_view_set_incoming(LinphoneCall *call){
 	gtk_widget_show_all(linphone_gtk_get_widget(callview,"answer_decline_panel"));
 	gtk_widget_hide(linphone_gtk_get_widget(callview,"buttons_panel"));
 	gtk_widget_hide(linphone_gtk_get_widget(callview, "hidden_buttons"));
+	gtk_widget_hide(linphone_gtk_get_widget(callview, "aspectframe1"));
 	display_peer_name_in_label(callee,linphone_call_get_remote_address (call));
 
 	answer_button=linphone_gtk_get_widget(callview,"accept_call");
@@ -537,7 +541,7 @@ void linphone_gtk_in_call_view_set_incoming(LinphoneCall *call){
 	image=create_pixmap (linphone_gtk_get_ui_config("stop_call_icon","stopcall-small.png"));
 	gtk_button_set_image(GTK_BUTTON(linphone_gtk_get_widget(callview,"decline_call")),image);
 	gtk_widget_show(image);
-
+	
 	linphone_gtk_in_call_set_animation_image(callview,GTK_STOCK_DIALOG_INFO,TRUE);
 }
 
@@ -753,6 +757,7 @@ void linphone_gtk_in_call_view_set_in_call(LinphoneCall *call){
 		gtk_widget_set_sensitive(linphone_gtk_get_widget(callview,"hold_call"),TRUE);
 	}
 	gtk_widget_show_all(linphone_gtk_get_widget(callview,"buttons_panel"));
+	gtk_widget_show_all(linphone_gtk_get_widget(callview, "aspectframe1"));
 // 	if (!in_conf) gtk_widget_show_all(linphone_gtk_get_widget(callview,"record_hbox"));
 // 	else gtk_widget_hide(linphone_gtk_get_widget(callview,"record_hbox"));
 	if (call_stats) show_used_codecs(call_stats,call);

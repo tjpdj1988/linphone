@@ -1910,6 +1910,20 @@ void linphone_gtk_create_keypad(GtkWidget *button){
 	gtk_widget_show(keypad);
 }
 
+void elophone_init_keypad(GtkWidget *keypad) {
+	GtkWidget *mw=linphone_gtk_get_main_window();
+	linphone_gtk_connect_digits(keypad);
+	linphone_gtk_init_dtmf_table(keypad);
+	g_object_set_data(G_OBJECT(mw),"keypad",(gpointer)keypad);
+	if(!GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mw),"show_abcd"))){
+		gtk_widget_hide(linphone_gtk_get_widget(keypad,"dtmf_A"));
+		gtk_widget_hide(linphone_gtk_get_widget(keypad,"dtmf_B"));
+		gtk_widget_hide(linphone_gtk_get_widget(keypad,"dtmf_C"));
+		gtk_widget_hide(linphone_gtk_get_widget(keypad,"dtmf_D"));
+		gtk_table_resize(GTK_TABLE(linphone_gtk_get_widget(keypad,"dtmf_table")),4,3);
+	}
+}
+
 static void elophone_menu_init(void) {
 	GtkWidget *main_window = linphone_gtk_get_main_window();
 	GtkWidget *menu = linphone_gtk_create_widget("elophone_menu", "elophone_menu");
