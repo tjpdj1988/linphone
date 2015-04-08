@@ -259,7 +259,7 @@ void linphone_gtk_call_log_update(GtkWidget *w){
 		gtk_tree_selection_set_mode(select, GTK_SELECTION_SINGLE);
 		g_signal_connect_swapped(G_OBJECT(select),"changed",(GCallback)call_log_selection_changed,v);
 		g_signal_connect(G_OBJECT(notebook),"focus-tab",(GCallback)linphone_gtk_call_log_reset_missed_call,NULL);
-		g_signal_connect(G_OBJECT(v),"button-press-event",(GCallback)linphone_gtk_call_log_button_pressed,NULL);
+// 		g_signal_connect(G_OBJECT(v),"button-press-event",(GCallback)linphone_gtk_call_log_button_pressed,NULL);
 //		gtk_button_set_image(GTK_BUTTON(linphone_gtk_get_widget(w,"call_back_button")),
 //		                     create_pixmap (linphone_gtk_get_ui_config("callback_button","status-green.png")));
 	}

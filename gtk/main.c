@@ -65,8 +65,8 @@ static LinphoneLDAPContactProvider* ldap_provider = NULL;
 
 static void linphone_gtk_global_state_changed(LinphoneCore *lc, LinphoneGlobalState state, const char*str);
 static void linphone_gtk_registration_state_changed(LinphoneCore *lc, LinphoneProxyConfig *cfg, LinphoneRegistrationState rs, const char *msg);
-static void linphone_gtk_notify_recv(LinphoneCore *lc, LinphoneFriend * fid);
-static void linphone_gtk_new_unknown_subscriber(LinphoneCore *lc, LinphoneFriend *lf, const char *url);
+// static void linphone_gtk_notify_recv(LinphoneCore *lc, LinphoneFriend * fid);
+// static void linphone_gtk_new_unknown_subscriber(LinphoneCore *lc, LinphoneFriend *lf, const char *url);
 static void linphone_gtk_auth_info_requested(LinphoneCore *lc, const char *realm, const char *username, const char *domain);
 static void linphone_gtk_display_status(LinphoneCore *lc, const char *status);
 static void linphone_gtk_configuring_status(LinphoneCore *lc, LinphoneConfiguringState status, const char *message);
@@ -76,7 +76,7 @@ static void linphone_gtk_display_url(LinphoneCore *lc, const char *msg, const ch
 static void linphone_gtk_call_log_updated(LinphoneCore *lc, LinphoneCallLog *cl);
 static void linphone_gtk_call_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cs, const char *msg);
 static void linphone_gtk_call_encryption_changed(LinphoneCore *lc, LinphoneCall *call, bool_t enabled, const char *token);
-static void linphone_gtk_transfer_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cstate);
+// static void linphone_gtk_transfer_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cstate);
 static void linphone_gtk_dtmf_received(LinphoneCore *lc, LinphoneCall *call, int dtmf);
 void linphone_gtk_save_main_window_position(GtkWindow* mw, GdkEvent *event, gpointer data);
 static gboolean linphone_gtk_auto_answer(LinphoneCall *call);
@@ -266,8 +266,8 @@ static void linphone_gtk_init_liblinphone(const char *config_file,
 	vtable.global_state_changed=linphone_gtk_global_state_changed;
 	vtable.call_state_changed=linphone_gtk_call_state_changed;
 	vtable.registration_state_changed=linphone_gtk_registration_state_changed;
-	vtable.notify_presence_received=linphone_gtk_notify_recv;
-	vtable.new_subscription_requested=linphone_gtk_new_unknown_subscriber;
+// 	vtable.notify_presence_received=linphone_gtk_notify_recv;
+// 	vtable.new_subscription_requested=linphone_gtk_new_unknown_subscriber;
 	vtable.auth_info_requested=linphone_gtk_auth_info_requested;
 	vtable.display_status=linphone_gtk_display_status;
 	vtable.display_message=linphone_gtk_display_message;
@@ -275,12 +275,12 @@ static void linphone_gtk_init_liblinphone(const char *config_file,
 	vtable.display_url=linphone_gtk_display_url;
 	vtable.call_log_updated=linphone_gtk_call_log_updated;
 	//vtable.text_received=linphone_gtk_text_received;
-	vtable.message_received=linphone_gtk_text_received;
-	vtable.is_composing_received=linphone_gtk_is_composing_received;
-	vtable.refer_received=linphone_gtk_refer_received;
-	vtable.buddy_info_updated=linphone_gtk_buddy_info_updated;
+// 	vtable.message_received=linphone_gtk_text_received;
+// 	vtable.is_composing_received=linphone_gtk_is_composing_received;
+// 	vtable.refer_received=linphone_gtk_refer_received;
+// 	vtable.buddy_info_updated=linphone_gtk_buddy_info_updated;
 	vtable.call_encryption_changed=linphone_gtk_call_encryption_changed;
-	vtable.transfer_state_changed=linphone_gtk_transfer_state_changed;
+// 	vtable.transfer_state_changed=linphone_gtk_transfer_state_changed;
 	vtable.dtmf_received=linphone_gtk_dtmf_received;
 	vtable.configuring_status=linphone_gtk_configuring_status;
 
@@ -1042,44 +1042,44 @@ void on_proxy_refresh_button_clicked(GtkWidget *w){
 	}
 }
 
-static void linphone_gtk_notify_recv(LinphoneCore *lc, LinphoneFriend * fid){
-	linphone_gtk_show_friends();
-}
+// static void linphone_gtk_notify_recv(LinphoneCore *lc, LinphoneFriend * fid){
+// 	linphone_gtk_show_friends();
+// }
 
-static void linphone_gtk_new_subscriber_response(GtkWidget *dialog, guint response_id, LinphoneFriend *lf){
-	switch(response_id){
-		case GTK_RESPONSE_YES:
-			linphone_gtk_show_contact(lf);
-		break;
-		default:
-			linphone_core_reject_subscriber(linphone_gtk_get_core(),lf);
-	}
-	gtk_widget_destroy(dialog);
-}
+// static void linphone_gtk_new_subscriber_response(GtkWidget *dialog, guint response_id, LinphoneFriend *lf){
+// 	switch(response_id){
+// 		case GTK_RESPONSE_YES:
+// 			linphone_gtk_show_contact(lf);
+// 		break;
+// 		default:
+// 			linphone_core_reject_subscriber(linphone_gtk_get_core(),lf);
+// 	}
+// 	gtk_widget_destroy(dialog);
+// }
 
-static void linphone_gtk_new_unknown_subscriber(LinphoneCore *lc, LinphoneFriend *lf, const char *url){
-	GtkWidget *dialog;
-	gchar *message;
-
-	if (linphone_gtk_get_ui_config_int("subscribe_deny_all",0)){
-		linphone_core_reject_subscriber(linphone_gtk_get_core(),lf);
-		return;
-	}
-
-	message=g_strdup_printf(_("%s would like to add you to his contact list.\nWould you allow him to see your presence status or add him to your contact list ?\nIf you answer no, this person will be temporarily blacklisted."),url);
-	dialog = gtk_message_dialog_new (
-				GTK_WINDOW(linphone_gtk_get_main_window()),
-                                GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_QUESTION,
-                                GTK_BUTTONS_YES_NO,
-                                "%s",
-				message);
-	g_free(message);
-	g_signal_connect(G_OBJECT (dialog), "response",
-		G_CALLBACK (linphone_gtk_new_subscriber_response),lf);
-	/* actually show the box */
-	gtk_widget_show(dialog);
-}
+// static void linphone_gtk_new_unknown_subscriber(LinphoneCore *lc, LinphoneFriend *lf, const char *url){
+// 	GtkWidget *dialog;
+// 	gchar *message;
+// 
+// 	if (linphone_gtk_get_ui_config_int("subscribe_deny_all",0)){
+// 		linphone_core_reject_subscriber(linphone_gtk_get_core(),lf);
+// 		return;
+// 	}
+// 
+// 	message=g_strdup_printf(_("%s would like to add you to his contact list.\nWould you allow him to see your presence status or add him to your contact list ?\nIf you answer no, this person will be temporarily blacklisted."),url);
+// 	dialog = gtk_message_dialog_new (
+// 				GTK_WINDOW(linphone_gtk_get_main_window()),
+//                                 GTK_DIALOG_DESTROY_WITH_PARENT,
+// 				GTK_MESSAGE_QUESTION,
+//                                 GTK_BUTTONS_YES_NO,
+//                                 "%s",
+// 				message);
+// 	g_free(message);
+// 	g_signal_connect(G_OBJECT (dialog), "response",
+// 		G_CALLBACK (linphone_gtk_new_subscriber_response),lf);
+// 	/* actually show the box */
+// 	gtk_widget_show(dialog);
+// }
 
 typedef struct _AuthTimeout{
 	GtkWidget *w;
@@ -1415,9 +1415,9 @@ static void linphone_gtk_call_encryption_changed(LinphoneCore *lc, LinphoneCall 
 	linphone_gtk_in_call_view_show_encryption(call);
 }
 
-static void linphone_gtk_transfer_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cstate){
-	linphone_gtk_in_call_view_set_transfer_status(call,cstate);
-}
+// // static void linphone_gtk_transfer_state_changed(LinphoneCore *lc, LinphoneCall *call, LinphoneCallState cstate){
+// // 	linphone_gtk_in_call_view_set_transfer_status(call,cstate);
+// // }
 
 static void update_registration_status(LinphoneProxyConfig *cfg, LinphoneRegistrationState rs){
 	GtkComboBox *box=GTK_COMBO_BOX(linphone_gtk_get_widget(linphone_gtk_get_main_window(),"identities"));
