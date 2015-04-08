@@ -30,7 +30,9 @@ pkgconfigdir=$(libdir)/pkgconfig
 pkgconfig_DATA=linphone.pc
 
 linphonedir=$(datadir)/linphone
-linphone_DATA=rootca.pem
+linphone_DATA= \
+	rootca.pem \
+	linphonerc.factory
 
 appdatadir=$(datadir)/appdata
 appdata_DATA=linphone.appdata.xml
@@ -46,14 +48,16 @@ rootca.pem:
 		cp -f $(srcdir)/archived-rootca.pem $(builddir)/rootca.pem ; \
 	fi
 
-EXTRA_DIST =					$(LINPHONE_SOUNDS) \
-						$(LINPHONE_RINGS) \
-						linphone.desktop.in   \
-						audio-assistant.desktop.in   \
-						linphone.pc.in \
-						Makefile.inc \
-						archived-rootca.pem \
-						$(appdata_DATA)
+EXTRA_DIST = \
+	$(LINPHONE_SOUNDS) \
+	$(LINPHONE_RINGS) \
+	linphone.desktop.in   \
+	audio-assistant.desktop.in   \
+	linphone.pc.in \
+	Makefile.inc \
+	archived-rootca.pem \
+	$(appdata_DATA) \
+	linphonerc.factory
 
 CLEANFILES=rootca.pem
 
