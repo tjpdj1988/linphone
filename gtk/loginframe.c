@@ -141,11 +141,9 @@ void linphone_gtk_login_frame_connect_clicked(GtkWidget *button){
 	const char *username;
 	const char *password;
 	const char *userid;
-	char *identity;
 	gboolean autologin;
-	LinphoneProxyConfig *cfg=(LinphoneProxyConfig*)g_object_get_data(G_OBJECT(mw),"login_proxy_config");
-	LinphoneAddress *from;
-	SipSetupContext *ssctx=linphone_proxy_config_get_sip_setup_context(cfg);
+	const MSList *proxies = linphone_core_get_proxy_config_list(linphone_gtk_get_core());
+	const MSList *it;
 
 	username=gtk_entry_get_text(GTK_ENTRY(linphone_gtk_get_widget(mw,"login_username")));
 	password=gtk_entry_get_text(GTK_ENTRY(linphone_gtk_get_widget(mw,"login_password")));
@@ -158,10 +156,19 @@ void linphone_gtk_login_frame_connect_clicked(GtkWidget *button){
 	linphone_gtk_set_ui_config_int("automatic_login",autologin);
 	linphone_gtk_set_ui_config("login_username",username);
 
-	from=linphone_address_new(linphone_proxy_config_get_identity(cfg));
-	linphone_address_set_username(from,username);
-	identity=linphone_address_as_string(from);
-	do_login(ssctx,identity,password,userid);
+	for(it=proxies; it!=NULL; it=it->next) {
+		LinphoneProxyConfig *cfg = (LinphoneProxyConfig *)it->data;
+		SipSetup *sip_setup = linphone_proxy_config_get_sip_setup(cfg);
+		if(sip_setup && strcmp(sip_setup_get_name(sip_setup), "SipLogin") == 0) {
+			char *identity;
+			SipSetupContext *ssctx=linphone_proxy_config_get_sip_setup_context(cfg);
+			LinphoneAddress *from = linphone_address_new(linphone_proxy_config_get_identity(cfg));
+			linphone_address_set_username(from,username);
+			identity=linphone_address_as_string(from);
+			do_login(ssctx,identity,password,userid);
+		}
+	}
+	
 	/*we need to refresh the identities since the proxy config may have changed.*/
 	linphone_gtk_load_identities();
 }

@@ -133,6 +133,7 @@ void sip_setup_register_all(void);
 SipSetup *sip_setup_lookup(const char *type_name);
 void sip_setup_unregister_all(void);
 LINPHONE_PUBLIC unsigned int sip_setup_get_capabilities(SipSetup *s);
+LINPHONE_PUBLIC const char *sip_setup_get_name(const SipSetup *s);
 
 SipSetupContext * sip_setup_context_new(SipSetup *s, struct _LinphoneProxyConfig *cfg);
 int sip_setup_context_account_exists(SipSetupContext *ctx, const char *uri);

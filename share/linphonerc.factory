@@ -16,5 +16,13 @@ reg_identity=sip:?@sip.linphone.org
 reg_expires=3600
 reg_sendregister=1
 
+[proxy_1]
+type=SipLogin
+reg_proxy=<sip:test.linphone.org;transport=tls>
+reg_route=<sip:test.linphone.org;transport=tls>
+reg_identity=sip:?@test.linphone.org
+reg_expires=3600
+reg_sendregister=1
+
 [misc]
 max_calls=1

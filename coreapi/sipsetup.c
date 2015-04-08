@@ -124,6 +124,10 @@ unsigned int sip_setup_get_capabilities(SipSetup *s){
 	return s->capabilities;
 }
 
+const char *sip_setup_get_name(const SipSetup *s) {
+	return s->name;
+}
+
 int sip_setup_context_get_capabilities(SipSetupContext *ctx){
 	return ctx->funcs->capabilities;
 }
