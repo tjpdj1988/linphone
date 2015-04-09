@@ -31,8 +31,7 @@ pkgconfig_DATA=linphone.pc
 
 linphonedir=$(datadir)/linphone
 linphone_DATA= \
-	rootca.pem \
-	linphonerc.factory
+	rootca.pem
 
 appdatadir=$(datadir)/appdata
 appdata_DATA=linphone.appdata.xml
@@ -56,8 +55,7 @@ EXTRA_DIST = \
 	linphone.pc.in \
 	Makefile.inc \
 	archived-rootca.pem \
-	$(appdata_DATA) \
-	linphonerc.factory
+	$(appdata_DATA)
 
 CLEANFILES=rootca.pem
 

@@ -60,7 +60,8 @@ EXTRA_DIST =		BUGS  \
 			$(GTK_FILELIST) \
 			gen-gtkfilelist.sh \
 			$(LINPHONEDEPS_FILELIST) \
-			$(ISS_SCRIPT).in
+			$(ISS_SCRIPT).in \
+			linphonerc.factory
 
 DISTCLEANFILES= $(ISS_SCRIPT) $(PACKAGE_WIN32_FILELIST)
 
@@ -137,9 +138,9 @@ zip:
 #add gtk dlls and files
 	make gtk-cherrypick
 	make other-cherrypick
-	cp -f $(top_srcdir)/gtk/gtkrc $(INSTALLDIR_WITH_PREFIX)/.
 	cp -f $(top_srcdir)/README $(INSTALLDIR_WITH_PREFIX)/.
 	cp -f $(top_srcdir)/COPYING $(INSTALLDIR_WITH_PREFIX)/.
+	cp -f $(top_srcdir)/linphonerc.factory $(INSTALLDIR_WITH_PREFIX)/.
 	cd $(INSTALLDIR_WITH_PREFIX) && zip -r $(ZIPFILE) *
 
 sdk:
