@@ -353,6 +353,17 @@ void linphone_proxy_config_set_expires(LinphoneProxyConfig *obj, int val){
 	obj->expires=val;
 }
 
+void linphone_proxy_config_set_transport(LinphoneProxyConfig *obj, LinphoneTransportType transport) {
+	LinphoneAddress *proxy_address = linphone_address_new(linphone_proxy_config_get_server_addr(obj));
+	LinphoneAddress *route_address = linphone_address_new(linphone_proxy_config_get_route(obj));
+	linphone_address_set_transport(proxy_address, transport);
+	linphone_address_set_transport(route_address, transport);
+	linphone_proxy_config_set_server_addr(obj, linphone_address_as_string(proxy_address));
+	linphone_proxy_config_set_route(obj, linphone_address_as_string(route_address));
+	linphone_address_unref(proxy_address);
+	linphone_address_unref(route_address);
+}
+
 void linphone_proxy_config_enable_publish(LinphoneProxyConfig *obj, bool_t val){
 	obj->publish=val;
 }
@@ -1155,6 +1166,13 @@ const char *linphone_proxy_config_get_contact_parameters(const LinphoneProxyConf
 **/
 const char *linphone_proxy_config_get_contact_uri_parameters(const LinphoneProxyConfig *obj){
 	return obj->contact_uri_params;
+}
+
+LinphoneTransportType linphone_proxy_get_transport(const LinphoneProxyConfig *obj) {
+	LinphoneAddress *proxy_address = linphone_address_new(obj->reg_proxy);
+	LinphoneTransportType transport = linphone_address_get_transport(proxy_address);
+	linphone_address_unref(proxy_address);
+	return transport;
 }
 
 struct _LinphoneCore * linphone_proxy_config_get_core(const LinphoneProxyConfig *obj){

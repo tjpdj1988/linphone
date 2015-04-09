@@ -317,3 +317,4 @@ LINPHONE_PUBLIC void linphone_gtk_proxy_cancel(GtkButton *button);
 LINPHONE_PUBLIC void linphone_gtk_proxy_address_changed(GtkEditable *editable);
 LINPHONE_PUBLIC void linphone_gtk_proxy_transport_changed(GtkWidget *combo);
 LINPHONE_PUBLIC void linphone_gtk_tunnel_ok(GtkButton *button);
+LINPHONE_PUBLIC void linphone_gtk_transport_selector_changed(GtkComboBox *selector, void *user_data);

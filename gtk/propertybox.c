@@ -263,6 +263,19 @@ void linphone_gtk_fill_video_sizes(GtkWidget *combo){
 	gtk_combo_box_set_active(GTK_COMBO_BOX(combo),active);
 }
 
+static void _linphone_gtk_apply_transport_to_proxy_config(LinphoneProxyConfig *proxy, const LinphoneTransportType *transport) {
+	linphone_proxy_config_set_transport(proxy, *transport);
+}
+
+void linphone_gtk_transport_selector_changed(GtkComboBox *selector, void *user_data) {
+	LinphoneCore *core = linphone_gtk_get_core();
+	const MSList *proxy_configs = linphone_core_get_proxy_config_list(core);
+	LinphoneTransportType transport = gtk_combo_box_get_active(selector);
+	ms_list_for_each(proxy_configs, (MSIterateFunc)linphone_proxy_config_edit);
+	ms_list_for_each2(proxy_configs, (MSIterate2Func)_linphone_gtk_apply_transport_to_proxy_config, &transport);
+	ms_list_for_each(proxy_configs, (MSIterateFunc)linphone_proxy_config_done);
+}
+
 void linphone_gtk_parameters_closed(GtkWidget *button){
 	GtkWidget *pb=gtk_widget_get_toplevel(button);
 	gtk_widget_destroy(pb);
@@ -1300,6 +1313,14 @@ static void linphone_gtk_show_media_encryption(GtkWidget *pb){
 	g_object_unref(G_OBJECT(model));
 }
 
+static void linphone_gtk_show_transports(GtkWidget *pb) {
+	LinphoneCore *core = linphone_gtk_get_core();
+	LinphoneProxyConfig *default_cfg = linphone_core_get_default_proxy_config(core);
+	LinphoneAddress *default_proxy_address = linphone_address_new(linphone_proxy_config_get_server_addr(default_cfg));
+	GtkWidget *transport_selector = linphone_gtk_get_widget(pb, "transport_selector");
+	fill_transport_combo_box(transport_selector, linphone_address_get_transport(default_proxy_address), TRUE);
+}
+
 void linphone_gtk_parameters_destroyed(GtkWidget *pb){
 	GtkWidget *mw=linphone_gtk_get_main_window();
 	g_object_set_data(G_OBJECT(mw),"parameters",NULL);
@@ -1504,6 +1525,7 @@ void linphone_gtk_show_parameters(void){
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(linphone_gtk_get_widget(pb, "fixed_video_port")), TRUE);
 	}
 
+	linphone_gtk_show_transports(pb);
 	linphone_gtk_show_media_encryption(pb);
 
 	tmp=linphone_core_get_nat_address(lc);

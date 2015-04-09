@@ -897,6 +897,7 @@ LINPHONE_PUBLIC	int linphone_proxy_config_set_server_addr(LinphoneProxyConfig *o
 LINPHONE_PUBLIC	int linphone_proxy_config_set_identity(LinphoneProxyConfig *obj, const char *identity);
 LINPHONE_PUBLIC	int linphone_proxy_config_set_route(LinphoneProxyConfig *obj, const char *route);
 LINPHONE_PUBLIC	void linphone_proxy_config_set_expires(LinphoneProxyConfig *obj, int expires);
+LINPHONE_PUBLIC void linphone_proxy_config_set_transport(LinphoneProxyConfig *obj, LinphoneTransportType transport);
 
 #define linphone_proxy_config_expires linphone_proxy_config_set_expires
 /**
@@ -1027,6 +1028,7 @@ LINPHONE_PUBLIC	const char *linphone_proxy_config_get_contact_parameters(const L
 LINPHONE_PUBLIC	void linphone_proxy_config_set_contact_parameters(LinphoneProxyConfig *obj, const char *contact_params);
 LINPHONE_PUBLIC void linphone_proxy_config_set_contact_uri_parameters(LinphoneProxyConfig *obj, const char *contact_uri_params);
 LINPHONE_PUBLIC const char* linphone_proxy_config_get_contact_uri_parameters(const LinphoneProxyConfig *obj);
+LINPHONE_PUBLIC LinphoneTransportType linphone_proxy_get_transport(const LinphoneProxyConfig *obj);
 
 /**
  * Get the #LinphoneCore object to which is associated the #LinphoneProxyConfig.
