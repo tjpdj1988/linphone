@@ -3,6 +3,7 @@ simple_ui=parameters.nat_frame parameters.sip_udp_port_label parameters.sip_udp_
 
 hidden_widgets=main_window.menubar1 main_window.address_bar main_window.identity_frame main_window.automatic_login main_window.vbox12
 advanced_ui=0
+title=Elophone
 
 [sip]
 default_proxy=0
