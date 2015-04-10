@@ -1,12 +1,12 @@
 [Setup]
-AppName=Linphone
-AppVerName=Linphone version @LINPHONE_VERSION@
+AppName=Elophone
+AppVerName=Elophone version @LINPHONE_VERSION@
 AppPublisher=linphone.org
 AppPublisherURL=http://www.linphone.org
 AppSupportURL=http://www.linphone.org
 AppUpdatesURL=http://www.linphone.org
-DefaultDirName={pf}\Linphone
-DefaultGroupName=Linphone
+DefaultDirName={pf}\Elophone
+DefaultGroupName=Elophone
 LicenseFile=COPYING
 ;InfoBeforeFile=README
 OutputBaseFilename=setup
@@ -31,8 +31,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 #include "linphone-win32.filelist"
 
 [Icons]
-Name: "{group}\Linphone"; Filename: "{app}\bin\linphone.exe" ; WorkingDir: "{app}"
-Name: "{userdesktop}\Linphone"; Filename: "{app}\bin\linphone.exe"; WorkingDir: "{app}" ; Tasks: desktopicon
+Name: "{group}\Elophone"; Filename: "{app}\bin\linphone.exe" ; WorkingDir: "{app}"
+Name: "{userdesktop}\Elophone"; Filename: "{app}\bin\linphone.exe"; WorkingDir: "{app}" ; Tasks: desktopicon
 
 [Registry]
 Root: HKCR; Subkey: "sip";
