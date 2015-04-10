@@ -1202,7 +1202,6 @@
                         <property name="label" translatable="yes">Audio assistant</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="image">properties_image</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="linphone_gtk_show_audio_assistant" swapped="no"/>
                       </object>
@@ -1856,13 +1855,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">gtk-preferences</property>
-                            <property name="icon-size">5</property>
                           </object>
                         </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="fill">False</property>
+                        <property name="fill">True</property>
+                        <property name="padding">2</property>
                         <property name="pack_type">end</property>
                         <property name="position">1</property>
                       </packing>
