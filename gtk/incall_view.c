@@ -817,6 +817,7 @@ void linphone_gtk_in_call_view_terminate(LinphoneCall *call, const char *error_m
 	gtk_widget_hide(linphone_gtk_get_widget(callview,"buttons_panel"));
 	gtk_widget_hide(linphone_gtk_get_widget(callview,"incall_audioview"));
 	gtk_widget_hide(linphone_gtk_get_widget(callview,"quality_indicator"));
+	gtk_widget_hide(linphone_gtk_get_widget(callview, "aspectframe1"));
 	linphone_gtk_enable_mute_button(
 		GTK_BUTTON(linphone_gtk_get_widget(callview,"incall_mute")),FALSE);
 	linphone_gtk_enable_hold_button(call,FALSE,TRUE);
