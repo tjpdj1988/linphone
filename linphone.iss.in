@@ -28,7 +28,7 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-#include "linphone-win32.filelist"
+#include "@PACKAGE@-win32.filelist"
 
 [Icons]
 Name: "{group}\Elophone"; Filename: "{app}\bin\linphone.exe" ; WorkingDir: "{app}"

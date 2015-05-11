@@ -11,16 +11,16 @@ save_auth_info=0
 
 [proxy_0]
 type=SipLogin
-reg_proxy=<sip:sip.linphone.org;transport=tls>
-reg_route=<sip:sip.linphone.org;transport=tls>
+reg_proxy=<sip:80.248.209.9;transport=tls>
+reg_route=<sip:80.248.209.9;transport=tls>
 reg_identity=sip:?@sip.linphone.org
 reg_expires=3600
 reg_sendregister=1
 
 [proxy_1]
 type=SipLogin
-reg_proxy=<sip:test.linphone.org;transport=tls>
-reg_route=<sip:test.linphone.org;transport=tls>
+reg_proxy=<sip:82.138.78.9;transport=tls>
+reg_route=<sip:82.138.78.9;transport=tls>
 reg_identity=sip:?@test.linphone.org
 reg_expires=3600
 reg_sendregister=1
