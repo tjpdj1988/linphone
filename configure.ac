@@ -222,24 +222,24 @@ AM_CONDITIONAL(BUILD_LDAP, test x$enable_ldap != xfalse)
 
 dnl conditionnal build of console interface.
 AC_ARG_ENABLE(console_ui,
-	[AS_HELP_STRING([--enable-console_ui=[yes/no]], [Turn on or off compilation of console interface (default=yes)])],
+	[AS_HELP_STRING([--enable-console_ui=[yes/no]], [Turn on or off compilation of console interface (default=off)])],
 	[case "${enableval}" in
 		yes)	console_ui=true ;;
 		no)	console_ui=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --enable-console_ui) ;;
 	esac],
-	[console_ui=true]
+	[console_ui=false]
 )
 
 dnl conditionnal build of tools.
 AC_ARG_ENABLE(tools,
-	[AS_HELP_STRING([--enable-tools=[yes/no]], [Turn on or off compilation of console interface (default=yes)])],
+	[AS_HELP_STRING([--enable-tools=[yes/no]], [Turn on or off compilation of console interface (default=no)])],
 	[case "${enableval}" in
 		yes)	build_tools=true ;;
 		no)	build_tools=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --enable-tools) ;;
 	esac],
-	[build_tools=check]
+	[build_tools=false]
 )
 
 dnl check for installed version of libupnp
@@ -400,7 +400,7 @@ esac
 
 AC_ARG_WITH(configdir,
 	[AS_HELP_STRING([--with-configdir], [Set a APPDATA subdir where linphone is supposed to find its config (windows only)])],
-	[ configdir=${withval}],[ configdir="Linphone" ])
+	[ configdir=${withval}],[ configdir="Elophone" ])
 
 AC_DEFINE_UNQUOTED(LINPHONE_CONFIG_DIR,"$configdir",[Windows appdata subdir where linphonerc can be found])
 
@@ -577,13 +577,13 @@ fi
 
 dnl conditionnal build of video support
 AC_ARG_ENABLE(video,
-	[AS_HELP_STRING([--enable-video], [Turn on video support compiling (default=yes)])],
+	[AS_HELP_STRING([--enable-video], [Turn on video support compiling (default=no)])],
 	[case "${enableval}" in
 		yes)	video=true ;;
 		no)	video=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --enable-video) ;;
 	esac],
-	[video=true]
+	[video=false]
 )
 
 AC_ARG_WITH(ffmpeg,
@@ -732,7 +732,7 @@ AC_ARG_ENABLE(assistant,
 		no)	build_wizard=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --enable-assistant) ;;
 	esac],
-	[build_wizard=check]
+	[build_wizard=false]
 )
 
 dnl check libsoup (needed for wizard)
@@ -887,13 +887,13 @@ if test x$enable_tunnel = xtrue; then
 fi
 
 AC_ARG_ENABLE(msg-storage,
-	[AS_HELP_STRING([--enable-msg-storage=[yes/no]], [Turn on compilation of message storage (default=auto)])],
+	[AS_HELP_STRING([--enable-msg-storage=[yes/no]], [Turn on compilation of message storage (default=no)])],
 	[case "${enableval}" in
 		yes)	enable_msg_storage=true ;;
 		no)	enable_msg_storage=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --enable-msg-storage) ;;
 	esac],
-	[enable_msg_storage=auto]
+	[enable_msg_storage=false]
 )
 
 if test x$enable_msg_storage != xfalse; then
@@ -956,7 +956,7 @@ AC_ARG_ENABLE(tutorials,
 		no)	tutorials_enabled=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --disable-tutorials) ;;
 	esac],
-	[tutorials_enabled=yes]
+	[tutorials_enabled=no]
 )
 AM_CONDITIONAL(ENABLE_TUTORIALS, test x$tutorials_enabled = xyes)
 
@@ -967,7 +967,7 @@ AC_ARG_ENABLE(tests,
 		no)	tests_enabled=false ;;
 		*)	AC_MSG_ERROR(bad value ${enableval} for --disable-tests) ;;
 	esac],
-	[tests_enabled=yes]
+	[tests_enabled=no]
 )
 AM_CONDITIONAL(ENABLE_TESTS, test x$tests_enabled = xyes)
 
