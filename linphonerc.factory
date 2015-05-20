@@ -8,6 +8,8 @@ title=Elophone
 [sip]
 default_proxy=0
 save_auth_info=0
+verify_server_certs=0
+verify_server_cn=0
 
 [proxy_0]
 type=SipLogin
