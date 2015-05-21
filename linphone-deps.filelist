@@ -17,3 +17,6 @@
 ./bin/libsqlite3-0.dll
 ./bin/libopus-0.dll
 ./bin/libbzrtp-0.dll
+./bin/libbcg729-0.dll
+./lib/mediastreamer/plugins
+./lib/mediastreamer/plugins/libmsbcg729-0.dll
