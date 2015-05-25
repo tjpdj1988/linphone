@@ -20,3 +20,4 @@
 ./bin/libbcg729-0.dll
 ./lib/mediastreamer/plugins
 ./lib/mediastreamer/plugins/libmsbcg729-0.dll
+./lib/mediastreamer/plugins/libmsamr-0.dll

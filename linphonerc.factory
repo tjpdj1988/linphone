@@ -27,3 +27,22 @@ reg_sendregister=1
 
 [misc]
 max_calls=1
+
+[audio_codec_0]
+mime=G729
+rate=8000
+channels=1
+enabled=1
+
+[audio_codec_1]
+mime=G722
+rate=8000
+channels=1
+enabled=1
+
+[audio_codec_2]
+mime=AMR
+rate=8000
+channels=1
+enabled=1
+
