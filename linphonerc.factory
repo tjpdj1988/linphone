@@ -14,6 +14,7 @@ verify_server_cn=0
 [proxy_0]
 type=SipLogin
 reg_proxy=<sip:212.99.5.164;transport=tls>
+reg_route=<sip:212.99.5.164;transport=tls>
 reg_identity=sip:?@212.99.5.164
 reg_expires=3600
 reg_sendregister=1
@@ -21,6 +22,7 @@ reg_sendregister=1
 [proxy_1]
 type=SipLogin
 reg_proxy=<sip:83.145.97.91;transport=tls>
+reg_route=<sip:83.145.97.91;transport=tls>
 reg_identity=sip:?@83.145.97.91
 reg_expires=3600
 reg_sendregister=1
