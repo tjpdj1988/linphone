@@ -526,7 +526,7 @@ void linphone_gtk_show_about(void){
 	    linphone_gtk_get_ui_config("logo","linphone-banner.png"));
 	static const char *defcfg="defcfg";
 
-	about=linphone_gtk_create_window("about");
+	about=linphone_gtk_create_window("elophone_about");
 	gtk_about_dialog_set_url_hook(about_url_clicked,NULL,NULL);
 	memset(&filestat,0,sizeof(filestat));
 	if (stat(license_file,&filestat)!=0){
