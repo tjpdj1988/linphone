@@ -1,5 +1,5 @@
 [GtkUi]
-simple_ui=parameters.nat_frame parameters.sip_udp_port_label parameters.sip_udp_port_box parameters.sip_tcp_port_label parameters.sip_tcp_port_box parameters.audio_rtp_port_label parameters.audio_rtp_port_box parameters.video_rtp_port_label parameters.video_rtp_port_box parameters.dscp_label parameters.dscp_edit_button parameters.tunnel_label parameters.tunnel_edit_button parameters.transport_frame parameters.video_frame parameters.ring_sound_label parameters.ring_sound_box parameters.echo_cancelation parameters.default_identity_frame parameters.proxy_accounts_frame parameters.privacy_frame parameters.notebook1
+simple_ui=parameters.nat_frame parameters.sip_udp_port_label parameters.sip_udp_port_box parameters.sip_tcp_port_label parameters.sip_tcp_port_box parameters.audio_rtp_port_label parameters.audio_rtp_port_box parameters.video_rtp_port_label parameters.video_rtp_port_box parameters.media_encryption_label parameters.media_encryption_combo parameters.dscp_label parameters.dscp_edit_button parameters.tunnel_label parameters.tunnel_edit_button parameters.transport_frame parameters.video_frame parameters.ring_sound_label parameters.ring_sound_box parameters.echo_cancelation parameters.default_identity_frame parameters.proxy_accounts_frame parameters.privacy_frame parameters.notebook1
 
 hidden_widgets=main_window.menubar1 main_window.address_bar main_window.identity_frame main_window.automatic_login main_window.vbox12
 advanced_ui=0
@@ -10,6 +10,7 @@ default_proxy=0
 save_auth_info=0
 verify_server_certs=0
 verify_server_cn=0
+media_encryption=srtp
 
 [proxy_0]
 type=SipLogin
