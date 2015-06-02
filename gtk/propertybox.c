@@ -1606,7 +1606,7 @@ void linphone_gtk_show_parameters(void){
 
 	/* CALL PARAMS CONFIG */
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(linphone_gtk_get_widget(pb, "auto_answer_checkbox")), linphone_gtk_get_ui_config_int("auto_answer", 0));
-	gtk_spin_button_set_value(GTK_SPIN_BUTTON(linphone_gtk_get_widget(pb, "auto_answer_delay_spinbutton")), linphone_gtk_get_ui_config_int("auto_answer_delay", 2000));
+	gtk_spin_button_set_value(GTK_SPIN_BUTTON(linphone_gtk_get_widget(pb, "auto_answer_delay_spinbutton")), linphone_gtk_get_ui_config_int("auto_answer_delay", 2000)/1000);
 
 	/* UI CONFIG */
 	linphone_gtk_fill_langs(pb);
@@ -1802,6 +1802,6 @@ void linphone_gtk_enable_auto_answer(GtkToggleButton *checkbox, gpointer user_da
 }
 
 void linphone_gtk_auto_answer_delay_changed(GtkSpinButton *spinbutton, gpointer user_data) {
-	int delay = gtk_spin_button_get_value(spinbutton);
+	int delay = gtk_spin_button_get_value(spinbutton) * 1000;
 	linphone_gtk_set_ui_config_int("auto_answer_delay", delay);
 }
