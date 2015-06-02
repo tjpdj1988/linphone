@@ -1931,7 +1931,7 @@
                                       <object class="GtkLabel" id="label8">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Username</property>
+                                        <property name="label" translatable="yes">Post number</property>
                                       </object>
                                     </child>
                                     <child>

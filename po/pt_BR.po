@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linphone-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-02 14:37+0200\n"
+"POT-Creation-Date: 2015-06-02 15:34+0200\n"
 "PO-Revision-Date: 2015-03-27 13:40+0000\n"
 "Last-Translator: Belledonne Communications <support@belledonne-"
 "communications.com>\n"
@@ -978,7 +978,6 @@ msgid "My current identity:"
 msgstr ""
 
 #: ../gtk/main.ui.h:41 ../gtk/tunnel_config.ui.h:7
-#: ../gtk/elophone_main.ui.h:41
 msgid "Username"
 msgstr ""
 
@@ -1713,6 +1712,10 @@ msgstr ""
 
 #: ../gtk/elophone_about.ui.h:2
 msgid "(C) Eloquant, 2015\n"
+msgstr ""
+
+#: ../gtk/elophone_main.ui.h:41
+msgid "Post number"
 msgstr ""
 
 #: ../gtk/elophone_parameters.ui.h:89

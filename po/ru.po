@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linphone-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-02 14:37+0200\n"
+"POT-Creation-Date: 2015-06-02 15:34+0200\n"
 "PO-Revision-Date: 2015-03-28 09:22+0000\n"
 "Last-Translator: AlexL <loginov.alex.valer@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/linphone-gtk/"
@@ -1016,7 +1016,6 @@ msgid "My current identity:"
 msgstr "Мой текущий идентификатор:"
 
 #: ../gtk/main.ui.h:41 ../gtk/tunnel_config.ui.h:7
-#: ../gtk/elophone_main.ui.h:41
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -1773,6 +1772,10 @@ msgstr "О Linphone"
 
 #: ../gtk/elophone_about.ui.h:2
 msgid "(C) Eloquant, 2015\n"
+msgstr ""
+
+#: ../gtk/elophone_main.ui.h:41
+msgid "Post number"
 msgstr ""
 
 #: ../gtk/elophone_parameters.ui.h:89
