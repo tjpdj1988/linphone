@@ -2039,6 +2039,9 @@
                         <property name="n_rows">9</property>
                         <property name="n_columns">2</property>
                         <child>
+                          <placeholder/>
+                        </child>
+                        <child>
                           <object class="GtkLabel" id="sip_udp_port_label">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -2450,9 +2453,6 @@
                             <property name="bottom_attach">5</property>
                           </packing>
                         </child>
-                        <child>
-                          <placeholder/>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -2847,7 +2847,7 @@
                       <object class="GtkLabel" id="label8">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Done</property>
+                        <property name="label" translatable="yes">Save</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>

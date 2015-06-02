@@ -32,6 +32,10 @@ gtk/audio_assistant.c
 [type: gettext/glade]gtk/ldap.ui
 [type: gettext/glade]gtk/config-uri.ui
 [type: gettext/glade]gtk/provisioning-fetch.ui
+[type: gettext/glade]gtk/elophone_about.ui
+[type: gettext/glade]gtk/elophone_main.ui
+[type: gettext/glade]gtk/elophone_menu.ui
+[type: gettext/glade]gtk/elophone_parameters.ui
 coreapi/linphonecore.c
 coreapi/misc.c
 coreapi/presence.c
@@ -39,6 +43,5 @@ coreapi/friend.c
 coreapi/proxy.c
 coreapi/callbacks.c
 coreapi/linphonecall.c
-
 coreapi/call_log.c
 gtk/videowindow.c

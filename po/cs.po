@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Klara Cihlarova <koty@seznam.cz>, 2005
 # Petr Pisar <petr.pisar@atlas.cz>, 2006-2011,2013
@@ -9,14 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linphone-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-27 14:40+0100\n"
+"POT-Creation-Date: 2015-06-02 14:37+0200\n"
 "PO-Revision-Date: 2015-03-27 13:40+0000\n"
-"Last-Translator: Belledonne Communications <support@belledonne-communications.com>\n"
-"Language-Team: Czech (http://www.transifex.com/projects/p/linphone-gtk/language/cs/)\n"
+"Last-Translator: Belledonne Communications <support@belledonne-"
+"communications.com>\n"
+"Language-Team: Czech (http://www.transifex.com/projects/p/linphone-gtk/"
+"language/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../gtk/calllogs.c:148 ../gtk/friendlist.c:974
@@ -71,14 +73,16 @@ msgstr[2] "%i sekund"
 msgid ""
 "<small><i>%s</i>\t<i>Quality: %s</i></small>\n"
 "%s\t%s\t"
-msgstr "<small><i>%s</i>\t<i>Kvalita: %s</i></small>\n%s\t%s\t"
+msgstr ""
+"<small><i>%s</i>\t<i>Kvalita: %s</i></small>\n"
+"%s\t%s\t"
 
 #: ../gtk/calllogs.c:341
 #, c-format
 msgid "<big><b>%s</b></big>\t%s"
 msgstr "<big><b>%s</b></big>\t%s"
 
-#: ../gtk/conference.c:38 ../gtk/main.ui.h:13
+#: ../gtk/conference.c:38 ../gtk/main.ui.h:13 ../gtk/elophone_main.ui.h:13
 msgid "Conference"
 msgstr "Konference"
 
@@ -113,9 +117,11 @@ msgstr "Zavolá právě teď na tuto adresu"
 
 #: ../gtk/main.c:141
 msgid ""
-"Specifiy a working directory (should be the base of the installation, eg: "
+"Specifiy a working directory (should be the base of the installation, eg: c:"
+"\\Program Files\\Linphone)"
+msgstr ""
+"Zadejte pracovní adresář (měl by být základní instalační adresář, například "
 "c:\\Program Files\\Linphone)"
-msgstr "Zadejte pracovní adresář (měl by být základní instalační adresář, například c:\\Program Files\\Linphone)"
 
 #: ../gtk/main.c:142
 msgid "Configuration file"
@@ -129,84 +135,79 @@ msgstr ""
 msgid "Run self test and exit 0 if succeed"
 msgstr ""
 
-#: ../gtk/main.c:1059
-#, c-format
-msgid ""
-"%s would like to add you to his contact list.\n"
-"Would you allow him to see your presence status or add him to your contact list ?\n"
-"If you answer no, this person will be temporarily blacklisted."
-msgstr "%s si vás chce přidat do svého adresáře.\nDovolíte mu, aby viděl váš stav přítomnosti, nebo si ho také chcete přidat do svého adresáře?\nOdpovíte-li ne, tato osobo bude dočasně blokována."
-
-#: ../gtk/main.c:1136
+#: ../gtk/main.c:1146
 #, c-format
 msgid ""
 "Please enter your password for username <i>%s</i>\n"
 " at realm <i>%s</i>:"
 msgstr ""
 
-#: ../gtk/main.c:1257
+#: ../gtk/main.c:1267
 msgid "Call error"
 msgstr "Chyba hovoru"
 
-#: ../gtk/main.c:1260 ../coreapi/linphonecore.c:3826
+#: ../gtk/main.c:1270 ../coreapi/linphonecore.c:3839
 msgid "Call ended"
 msgstr "Hovor ukončen"
 
-#: ../gtk/main.c:1263 ../coreapi/call_log.c:221
+#: ../gtk/main.c:1273 ../coreapi/call_log.c:221
 msgid "Incoming call"
 msgstr "Příchozí hovor"
 
-#: ../gtk/main.c:1265 ../gtk/incall_view.c:532 ../gtk/main.ui.h:5
+#: ../gtk/main.c:1275 ../gtk/incall_view.c:537 ../gtk/main.ui.h:5
+#: ../gtk/elophone_main.ui.h:5
 msgid "Answer"
 msgstr "Odpovědět"
 
-#: ../gtk/main.c:1267 ../gtk/main.ui.h:6
+#: ../gtk/main.c:1277 ../gtk/main.ui.h:6 ../gtk/elophone_main.ui.h:6
 msgid "Decline"
 msgstr "Odmítnout"
 
-#: ../gtk/main.c:1273
+#: ../gtk/main.c:1283
 msgid "Call paused"
 msgstr "Hovor odložen"
 
-#: ../gtk/main.c:1273
+#: ../gtk/main.c:1283
 #, c-format
 msgid "<b>by %s</b>"
 msgstr "<b>kým: %s</b>"
 
-#: ../gtk/main.c:1343
+#: ../gtk/main.c:1353
 #, c-format
 msgid "%s proposed to start video. Do you accept ?"
 msgstr "%s navrhuje začít videohovor. Přijímáte?"
 
-#: ../gtk/main.c:1505
+#: ../gtk/main.c:1516
 msgid "Website link"
 msgstr "Odkaz na webovou stránku"
 
-#: ../gtk/main.c:1554
+#: ../gtk/main.c:1565
 msgid "Linphone - a video internet phone"
 msgstr "Lipnhone – internetový videofon"
 
-#: ../gtk/main.c:1646
+#: ../gtk/main.c:1657
 #, c-format
 msgid "%s (Default)"
 msgstr "%s (Výchozí)"
 
-#: ../gtk/main.c:1978 ../coreapi/callbacks.c:1057
+#: ../gtk/main.c:2018 ../coreapi/callbacks.c:1057
 #, c-format
 msgid "We are transferred to %s"
 msgstr "Byly jsme přepojeni na %s"
 
-#: ../gtk/main.c:1988
+#: ../gtk/main.c:2028
 msgid ""
 "No sound cards have been detected on this computer.\n"
 "You won't be able to send or receive audio calls."
-msgstr "Na tomto počítači nebyla objevena žádná zvuková karta.\nNebudete moci vytáčet a přijímat a zvukové hovory."
+msgstr ""
+"Na tomto počítači nebyla objevena žádná zvuková karta.\n"
+"Nebudete moci vytáčet a přijímat a zvukové hovory."
 
-#: ../gtk/main.c:2136
+#: ../gtk/main.c:2176
 msgid "A free SIP video-phone"
 msgstr "Volný SIP videofon"
 
-#: ../gtk/main.c:2241
+#: ../gtk/main.c:2281
 #, c-format
 msgid "Hello\n"
 msgstr ""
@@ -219,7 +220,7 @@ msgstr "Přidat do adresáře"
 msgid "Presence status"
 msgstr "Stav"
 
-#: ../gtk/friendlist.c:709 ../gtk/propertybox.c:552 ../gtk/contact.ui.h:1
+#: ../gtk/friendlist.c:709 ../gtk/propertybox.c:565 ../gtk/contact.ui.h:1
 msgid "Name"
 msgstr "Jméno"
 
@@ -260,124 +261,125 @@ msgstr "Odstranit historii diskuze u kontaktu „%s“"
 msgid "Add new contact from %s directory"
 msgstr "Přidat nový kontakt z adresáře %s"
 
-#: ../gtk/propertybox.c:558
+#: ../gtk/propertybox.c:571
 msgid "Rate (Hz)"
 msgstr "Kmitočet (Hz)"
 
-#: ../gtk/propertybox.c:564
+#: ../gtk/propertybox.c:577
 msgid "Status"
 msgstr "Stav"
 
-#: ../gtk/propertybox.c:570
+#: ../gtk/propertybox.c:583
 msgid "IP Bitrate (kbit/s)"
 msgstr ""
 
-#: ../gtk/propertybox.c:577
+#: ../gtk/propertybox.c:590
 msgid "Parameters"
 msgstr "Parametry"
 
-#: ../gtk/propertybox.c:620 ../gtk/propertybox.c:763
+#: ../gtk/propertybox.c:633 ../gtk/propertybox.c:776
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: ../gtk/propertybox.c:622 ../gtk/propertybox.c:763 ../gtk/parameters.ui.h:17
+#: ../gtk/propertybox.c:635 ../gtk/propertybox.c:776 ../gtk/parameters.ui.h:20
+#: ../gtk/elophone_parameters.ui.h:67
 msgid "Disabled"
 msgstr "Zakázáno"
 
-#: ../gtk/propertybox.c:809
+#: ../gtk/propertybox.c:822
 msgid "Account"
 msgstr "Účet"
 
-#: ../gtk/propertybox.c:1072
+#: ../gtk/propertybox.c:1085
 msgid "English"
 msgstr "angličtina"
 
-#: ../gtk/propertybox.c:1073
+#: ../gtk/propertybox.c:1086
 msgid "French"
 msgstr "francouzština"
 
-#: ../gtk/propertybox.c:1074
+#: ../gtk/propertybox.c:1087
 msgid "Swedish"
 msgstr "švédština"
 
-#: ../gtk/propertybox.c:1075
+#: ../gtk/propertybox.c:1088
 msgid "Italian"
 msgstr "italština"
 
-#: ../gtk/propertybox.c:1076
+#: ../gtk/propertybox.c:1089
 msgid "Spanish"
 msgstr "španělština"
 
-#: ../gtk/propertybox.c:1077
+#: ../gtk/propertybox.c:1090
 msgid "Brazilian Portugese"
 msgstr "brazilská portugalština"
 
-#: ../gtk/propertybox.c:1078
+#: ../gtk/propertybox.c:1091
 msgid "Polish"
 msgstr "polština"
 
-#: ../gtk/propertybox.c:1079
+#: ../gtk/propertybox.c:1092
 msgid "German"
 msgstr "němčina"
 
-#: ../gtk/propertybox.c:1080
+#: ../gtk/propertybox.c:1093
 msgid "Russian"
 msgstr "ruština"
 
-#: ../gtk/propertybox.c:1081
+#: ../gtk/propertybox.c:1094
 msgid "Japanese"
 msgstr "japonština"
 
-#: ../gtk/propertybox.c:1082
+#: ../gtk/propertybox.c:1095
 msgid "Dutch"
 msgstr "dánština"
 
-#: ../gtk/propertybox.c:1083
+#: ../gtk/propertybox.c:1096
 msgid "Hungarian"
 msgstr "maďarština"
 
-#: ../gtk/propertybox.c:1084
+#: ../gtk/propertybox.c:1097
 msgid "Czech"
 msgstr "čeština"
 
-#: ../gtk/propertybox.c:1085
+#: ../gtk/propertybox.c:1098
 msgid "Chinese"
 msgstr "čínština"
 
-#: ../gtk/propertybox.c:1086
+#: ../gtk/propertybox.c:1099
 msgid "Traditional Chinese"
 msgstr "tradiční čínština"
 
-#: ../gtk/propertybox.c:1087
+#: ../gtk/propertybox.c:1100
 msgid "Norwegian"
 msgstr "norština"
 
-#: ../gtk/propertybox.c:1088
+#: ../gtk/propertybox.c:1101
 msgid "Hebrew"
 msgstr "hebrejština"
 
-#: ../gtk/propertybox.c:1089
+#: ../gtk/propertybox.c:1102
 msgid "Serbian"
 msgstr "srbština"
 
-#: ../gtk/propertybox.c:1156
+#: ../gtk/propertybox.c:1169
 msgid ""
 "You need to restart linphone for the new language selection to take effect."
 msgstr "Aby se projevil výběr nového jazyka, je nutné znovu spustit linphone."
 
-#: ../gtk/propertybox.c:1236
+#: ../gtk/propertybox.c:1249
 msgid "None"
 msgstr "Žádné"
 
-#: ../gtk/propertybox.c:1240
+#: ../gtk/propertybox.c:1253
 msgid "SRTP"
 msgstr "SRTP"
 
-#: ../gtk/propertybox.c:1246
+#: ../gtk/propertybox.c:1259
 msgid "DTLS"
 msgstr ""
 
-#: ../gtk/propertybox.c:1253
+#: ../gtk/propertybox.c:1266
 msgid "ZRTP"
 msgstr "ZRTP"
 
@@ -386,7 +388,9 @@ msgstr "ZRTP"
 msgid ""
 "A more recent version is availalble from %s.\n"
 "Would you like to open a browser to download it ?"
-msgstr "Na %s je dostupná novější verze.\nPřejete si otevřít prohlížeč, abyste si ji mohli stáhnout?"
+msgstr ""
+"Na %s je dostupná novější verze.\n"
+"Přejete si otevřít prohlížeč, abyste si ji mohli stáhnout?"
 
 #: ../gtk/update.c:91
 msgid "You are running the lastest version."
@@ -446,7 +450,8 @@ msgstr ""
 msgid "Enter your linphone.org username"
 msgstr "Zadejte uživatelské jméno na linphone.org"
 
-#: ../gtk/setupwizard.c:102 ../gtk/parameters.ui.h:81 ../gtk/ldap.ui.h:4
+#: ../gtk/setupwizard.c:102 ../gtk/parameters.ui.h:85 ../gtk/ldap.ui.h:4
+#: ../gtk/elophone_parameters.ui.h:63
 msgid "Username:"
 msgstr "Uživatelské jméno:"
 
@@ -502,7 +507,10 @@ msgstr ""
 msgid ""
 "Error, account not validated, username already used or server unreachable.\n"
 "Please go back and try again."
-msgstr "Došlo k chybě (účet nebyl ověřen, uživatelské jméno již existuje nebo server není dostupný).\nProsím, vraťte se a zkoste to znovu."
+msgstr ""
+"Došlo k chybě (účet nebyl ověřen, uživatelské jméno již existuje nebo server "
+"není dostupný).\n"
+"Prosím, vraťte se a zkoste to znovu."
 
 #: ../gtk/setupwizard.c:405
 msgid "Thank you. Your account is now configured and ready for use."
@@ -510,9 +518,13 @@ msgstr "Děkujeme vám. Váš účet je nyní nastaven a připraven k použití
 
 #: ../gtk/setupwizard.c:413
 msgid ""
-"Please validate your account by clicking on the link we just sent you by email.\n"
+"Please validate your account by clicking on the link we just sent you by "
+"email.\n"
 "Then come back here and press Next button."
-msgstr "Prosím, ověřte svůj účet tak, že kliknete na odkaz, který jsme vám právě zaslali e-mailem.\nPak se sem vraťte a stiskněte tlačítko Další."
+msgstr ""
+"Prosím, ověřte svůj účet tak, že kliknete na odkaz, který jsme vám právě "
+"zaslali e-mailem.\n"
+"Pak se sem vraťte a stiskněte tlačítko Další."
 
 #: ../gtk/setupwizard.c:602
 msgid "SIP account configuration assistant"
@@ -617,7 +629,9 @@ msgstr "Přímé nebo skrze server"
 msgid ""
 "download: %f\n"
 "upload: %f (kbit/s)"
-msgstr "příchozí: %f\nodchozí: %f (kb/s)"
+msgstr ""
+"příchozí: %f\n"
+"odchozí: %f (kb/s)"
 
 #: ../gtk/incall_view.c:272 ../gtk/incall_view.c:274
 #, c-format
@@ -629,111 +643,114 @@ msgstr ""
 msgid "%.3f seconds"
 msgstr "%.3f sekund"
 
-#: ../gtk/incall_view.c:407 ../gtk/main.ui.h:12 ../gtk/videowindow.c:235
+#: ../gtk/incall_view.c:407 ../gtk/main.ui.h:12 ../gtk/elophone_main.ui.h:10
+#: ../gtk/videowindow.c:235
 msgid "Hang up"
 msgstr "Zavěsit"
 
-#: ../gtk/incall_view.c:511
+#: ../gtk/incall_view.c:514
 msgid "<b>Calling...</b>"
 msgstr "<b>Volá se…</b>"
 
-#: ../gtk/incall_view.c:514 ../gtk/incall_view.c:733
+#: ../gtk/incall_view.c:517 ../gtk/incall_view.c:738
 msgid "00::00::00"
 msgstr "00:00:00"
 
-#: ../gtk/incall_view.c:525
+#: ../gtk/incall_view.c:528
 msgid "<b>Incoming call</b>"
 msgstr "<b>Příchozí hovor</b>"
 
-#: ../gtk/incall_view.c:562
+#: ../gtk/incall_view.c:567
 msgid "good"
 msgstr "dobrá"
 
-#: ../gtk/incall_view.c:564
+#: ../gtk/incall_view.c:569
 msgid "average"
 msgstr "průměrná"
 
-#: ../gtk/incall_view.c:566
+#: ../gtk/incall_view.c:571
 msgid "poor"
 msgstr "slabá"
 
-#: ../gtk/incall_view.c:568
+#: ../gtk/incall_view.c:573
 msgid "very poor"
 msgstr "velmi slabá"
 
-#: ../gtk/incall_view.c:570
+#: ../gtk/incall_view.c:575
 msgid "too bad"
 msgstr "příliš špatná"
 
-#: ../gtk/incall_view.c:571 ../gtk/incall_view.c:587
+#: ../gtk/incall_view.c:576 ../gtk/incall_view.c:592
 msgid "unavailable"
 msgstr "nedostupná"
 
-#: ../gtk/incall_view.c:679
+#: ../gtk/incall_view.c:684
 msgid "Secured by SRTP"
 msgstr "Zabezpečeno pomocí SRTP"
 
-#: ../gtk/incall_view.c:685
+#: ../gtk/incall_view.c:690
 msgid "Secured by DTLS"
 msgstr ""
 
-#: ../gtk/incall_view.c:691
+#: ../gtk/incall_view.c:696
 #, c-format
 msgid "Secured by ZRTP - [auth token: %s]"
 msgstr "Zabezpečeno pomocí ZRTP – [ověřovací klíč: %s]"
 
-#: ../gtk/incall_view.c:697
+#: ../gtk/incall_view.c:702
 msgid "Set unverified"
 msgstr "Nastavit na neověřeno"
 
-#: ../gtk/incall_view.c:697 ../gtk/main.ui.h:4
+#: ../gtk/incall_view.c:702 ../gtk/main.ui.h:4 ../gtk/elophone_main.ui.h:4
 msgid "Set verified"
 msgstr "Nastavit na ověřeno"
 
-#: ../gtk/incall_view.c:728
+#: ../gtk/incall_view.c:733
 msgid "In conference"
 msgstr "Probíhá konference"
 
-#: ../gtk/incall_view.c:728
+#: ../gtk/incall_view.c:733
 msgid "<b>In call</b>"
 msgstr "<b>Probíhá hovor</b>"
 
-#: ../gtk/incall_view.c:764
+#: ../gtk/incall_view.c:770
 msgid "<b>Paused call</b>"
 msgstr "<b>Odložený hovor</b>"
 
-#: ../gtk/incall_view.c:800
+#: ../gtk/incall_view.c:806
 msgid "<b>Call ended.</b>"
 msgstr "<b>Hovor skončil.</b>"
 
-#: ../gtk/incall_view.c:831
+#: ../gtk/incall_view.c:838
 msgid "Transfer in progress"
 msgstr "Probíhá přepojení"
 
-#: ../gtk/incall_view.c:834
+#: ../gtk/incall_view.c:841
 msgid "Transfer done."
 msgstr "Přepojení dokončeno."
 
-#: ../gtk/incall_view.c:837
+#: ../gtk/incall_view.c:844
 msgid "Transfer failed."
 msgstr "Přepojení selhalo."
 
-#: ../gtk/incall_view.c:881
+#: ../gtk/incall_view.c:888
 msgid "Resume"
 msgstr "Obnovit"
 
-#: ../gtk/incall_view.c:888 ../gtk/main.ui.h:9
+#: ../gtk/incall_view.c:895 ../gtk/main.ui.h:9 ../gtk/elophone_main.ui.h:8
 msgid "Pause"
 msgstr "Odložit"
 
-#: ../gtk/incall_view.c:954
+#: ../gtk/incall_view.c:961
 #, c-format
 msgid ""
 "<small><i>Recording into\n"
 "%s %s</i></small>"
-msgstr "<small><i>Nahrává se do\n%s %s</i></small>"
+msgstr ""
+"<small><i>Nahrává se do\n"
+"%s %s</i></small>"
 
-#: ../gtk/incall_view.c:954
+#: ../gtk/incall_view.c:961
 msgid "(Paused)"
 msgstr "(Odloženo)"
 
@@ -835,6 +852,7 @@ msgid "Audio Assistant"
 msgstr ""
 
 #: ../gtk/audio_assistant.c:513 ../gtk/main.ui.h:32
+#: ../gtk/elophone_main.ui.h:32
 msgid "Audio assistant"
 msgstr ""
 
@@ -850,163 +868,165 @@ msgstr ""
 msgid "Record and Play"
 msgstr ""
 
-#: ../gtk/main.ui.h:1
+#: ../gtk/main.ui.h:1 ../gtk/elophone_main.ui.h:1
 msgid "<b>Callee name</b>"
 msgstr "<b>Jméno volaného</b>"
 
-#: ../gtk/main.ui.h:2
+#: ../gtk/main.ui.h:2 ../gtk/elophone_main.ui.h:2
 msgid "Send"
 msgstr "Odeslat"
 
-#: ../gtk/main.ui.h:3
+#: ../gtk/main.ui.h:3 ../gtk/elophone_main.ui.h:3
 msgid "End conference"
 msgstr "Ukončit konferenci"
 
-#: ../gtk/main.ui.h:7
+#: ../gtk/main.ui.h:7 ../gtk/elophone_main.ui.h:7
 msgid "Record this call to an audio file"
 msgstr "Nahrát tento hovor do zvukového souboru"
 
-#: ../gtk/main.ui.h:8
+#: ../gtk/main.ui.h:8 ../gtk/elophone_main.ui.h:11
 msgid "Video"
 msgstr "Obraz"
 
-#: ../gtk/main.ui.h:10
+#: ../gtk/main.ui.h:10 ../gtk/elophone_main.ui.h:9
 msgid "Mute"
 msgstr "Ztišit"
 
-#: ../gtk/main.ui.h:11
+#: ../gtk/main.ui.h:11 ../gtk/elophone_main.ui.h:12
 msgid "Transfer"
 msgstr "Přepojit"
 
-#: ../gtk/main.ui.h:14
+#: ../gtk/main.ui.h:14 ../gtk/elophone_main.ui.h:14
 msgid "In call"
 msgstr "Telefonuje se"
 
-#: ../gtk/main.ui.h:15
+#: ../gtk/main.ui.h:15 ../gtk/elophone_main.ui.h:15
 msgid "Duration"
 msgstr "Délka"
 
-#: ../gtk/main.ui.h:16
+#: ../gtk/main.ui.h:16 ../gtk/elophone_main.ui.h:16
 msgid "Call quality rating"
 msgstr "Hodnocení kvality hovoru"
 
-#: ../gtk/main.ui.h:17
+#: ../gtk/main.ui.h:17 ../gtk/elophone_main.ui.h:17
 msgid "All users"
 msgstr "všech uživatelích"
 
-#: ../gtk/main.ui.h:18
+#: ../gtk/main.ui.h:18 ../gtk/elophone_main.ui.h:18
 msgid "Online users"
 msgstr "připojených uživatelích"
 
-#: ../gtk/main.ui.h:19
+#: ../gtk/main.ui.h:19 ../gtk/elophone_main.ui.h:19
 msgid "ADSL"
 msgstr "ADSL"
 
-#: ../gtk/main.ui.h:20
+#: ../gtk/main.ui.h:20 ../gtk/elophone_main.ui.h:20
 msgid "Fiber Channel"
 msgstr "Fiber Channel"
 
-#: ../gtk/main.ui.h:21
+#: ../gtk/main.ui.h:21 ../gtk/elophone_main.ui.h:21
 msgid "Default"
 msgstr "Výchozí"
 
-#: ../gtk/main.ui.h:22
+#: ../gtk/main.ui.h:22 ../gtk/elophone_main.ui.h:22
 msgid "Delete"
 msgstr "Smazat"
 
-#: ../gtk/main.ui.h:23
+#: ../gtk/main.ui.h:23 ../gtk/elophone_main.ui.h:23
 msgid "_Options"
 msgstr "V_olby"
 
-#: ../gtk/main.ui.h:24
+#: ../gtk/main.ui.h:24 ../gtk/elophone_main.ui.h:24
 msgid "Set configuration URI"
 msgstr ""
 
-#: ../gtk/main.ui.h:25
+#: ../gtk/main.ui.h:25 ../gtk/elophone_main.ui.h:25
 msgid "Always start video"
 msgstr "Vždy spustit obraz"
 
-#: ../gtk/main.ui.h:26
+#: ../gtk/main.ui.h:26 ../gtk/elophone_main.ui.h:26
 msgid "Enable self-view"
 msgstr "Zobrazovat sám sebe"
 
-#: ../gtk/main.ui.h:27
+#: ../gtk/main.ui.h:27 ../gtk/elophone_main.ui.h:27
 msgid "_Help"
 msgstr "Nápo_věda"
 
-#: ../gtk/main.ui.h:28
+#: ../gtk/main.ui.h:28 ../gtk/elophone_main.ui.h:28
 msgid "Show debug window"
 msgstr "Zobrazit ladicí okno"
 
-#: ../gtk/main.ui.h:29
+#: ../gtk/main.ui.h:29 ../gtk/elophone_main.ui.h:29
 msgid "_Homepage"
 msgstr "_Domovská stránka"
 
-#: ../gtk/main.ui.h:30
+#: ../gtk/main.ui.h:30 ../gtk/elophone_main.ui.h:30
 msgid "Check _Updates"
 msgstr "Vyhledat akt_ualizace"
 
-#: ../gtk/main.ui.h:31
+#: ../gtk/main.ui.h:31 ../gtk/elophone_main.ui.h:31
 msgid "Account assistant"
 msgstr "Průvodce účtem"
 
-#: ../gtk/main.ui.h:33
+#: ../gtk/main.ui.h:33 ../gtk/elophone_main.ui.h:33
 msgid "SIP address or phone number:"
 msgstr "SIP adresa nebo telefonní číslo:"
 
-#: ../gtk/main.ui.h:34
+#: ../gtk/main.ui.h:34 ../gtk/elophone_main.ui.h:34
 msgid "Initiate a new call"
 msgstr "Zahájit nový hovor"
 
-#: ../gtk/main.ui.h:35
+#: ../gtk/main.ui.h:35 ../gtk/elophone_main.ui.h:35
 msgid "Contacts"
 msgstr "Kontakty"
 
-#: ../gtk/main.ui.h:36
+#: ../gtk/main.ui.h:36 ../gtk/elophone_main.ui.h:36
 msgid "Search"
 msgstr "Hledat"
 
-#: ../gtk/main.ui.h:37
+#: ../gtk/main.ui.h:37 ../gtk/elophone_main.ui.h:37
 msgid "<b>Add contacts from directory</b>"
 msgstr "<b>Přidat kontakty z adresáře</b>"
 
-#: ../gtk/main.ui.h:38
+#: ../gtk/main.ui.h:38 ../gtk/elophone_main.ui.h:38
 msgid "Add contact"
 msgstr "Přidat kontakt"
 
-#: ../gtk/main.ui.h:39
+#: ../gtk/main.ui.h:39 ../gtk/elophone_main.ui.h:39
 msgid "Recent calls"
 msgstr "Nedávné hovory"
 
-#: ../gtk/main.ui.h:40
+#: ../gtk/main.ui.h:40 ../gtk/elophone_main.ui.h:40
 msgid "My current identity:"
 msgstr "Moje současná totožnost:"
 
 #: ../gtk/main.ui.h:41 ../gtk/tunnel_config.ui.h:7
+#: ../gtk/elophone_main.ui.h:41
 msgid "Username"
 msgstr "Uživatelské jméno"
 
 #: ../gtk/main.ui.h:42 ../gtk/tunnel_config.ui.h:8
+#: ../gtk/elophone_main.ui.h:42
 msgid "Password"
 msgstr "Heslo"
 
-#: ../gtk/main.ui.h:43
+#: ../gtk/main.ui.h:43 ../gtk/elophone_main.ui.h:43
 msgid "Internet connection:"
 msgstr "Připojení k Internetu:"
 
-#: ../gtk/main.ui.h:44
+#: ../gtk/main.ui.h:44 ../gtk/elophone_main.ui.h:44
 msgid "Automatically log me in"
 msgstr "Přihlašovat mě automaticky"
 
-#: ../gtk/main.ui.h:45 ../gtk/password.ui.h:3
+#: ../gtk/main.ui.h:45 ../gtk/password.ui.h:3 ../gtk/elophone_main.ui.h:45
 msgid "UserID"
 msgstr "Identifikátor uživatele"
 
-#: ../gtk/main.ui.h:46
+#: ../gtk/main.ui.h:46 ../gtk/elophone_main.ui.h:46
 msgid "Login information"
 msgstr "Informace o přihlášení"
 
-#: ../gtk/main.ui.h:47
+#: ../gtk/main.ui.h:47 ../gtk/elophone_main.ui.h:47
 msgid "<b>Welcome!</b>"
 msgstr ""
 
@@ -1018,11 +1038,11 @@ msgstr ""
 msgid "(C) Belledonne Communications, 2010\n"
 msgstr ""
 
-#: ../gtk/about.ui.h:4
+#: ../gtk/about.ui.h:4 ../gtk/elophone_about.ui.h:4
 msgid "An internet video phone using the standard SIP (rfc3261) protocol."
 msgstr "Internetový videofon používající standardní protokol SIP (RFC 3261)."
 
-#: ../gtk/about.ui.h:5
+#: ../gtk/about.ui.h:5 ../gtk/elophone_about.ui.h:5
 msgid ""
 "fr: Simon Morlat\n"
 "en: Simon Morlat and Delphine Perreau\n"
@@ -1122,7 +1142,7 @@ msgstr ""
 msgid "Route (optional):"
 msgstr "Směrování (volitelné):"
 
-#: ../gtk/sip_account.ui.h:11
+#: ../gtk/sip_account.ui.h:11 ../gtk/elophone_parameters.ui.h:77
 msgid "Transport"
 msgstr ""
 
@@ -1142,347 +1162,357 @@ msgstr ""
 msgid "Configure a SIP account"
 msgstr "Nastavit SIP účet"
 
-#: ../gtk/parameters.ui.h:1
+#: ../gtk/parameters.ui.h:1 ../gtk/elophone_parameters.ui.h:1
 msgid "anonymous"
 msgstr ""
 
-#: ../gtk/parameters.ui.h:2
+#: ../gtk/parameters.ui.h:2 ../gtk/elophone_parameters.ui.h:2
 msgid "GSSAPI"
 msgstr ""
 
-#: ../gtk/parameters.ui.h:3
+#: ../gtk/parameters.ui.h:3 ../gtk/elophone_parameters.ui.h:3
 msgid "SASL"
 msgstr ""
 
-#: ../gtk/parameters.ui.h:4
+#: ../gtk/parameters.ui.h:4 ../gtk/elophone_parameters.ui.h:4
 msgid "default soundcard"
 msgstr "implicitní zvuková karta"
 
-#: ../gtk/parameters.ui.h:5
+#: ../gtk/parameters.ui.h:5 ../gtk/elophone_parameters.ui.h:5
 msgid "a sound card"
 msgstr "zvuková karta"
 
-#: ../gtk/parameters.ui.h:6
+#: ../gtk/parameters.ui.h:6 ../gtk/elophone_parameters.ui.h:6
 msgid "default camera"
 msgstr "implicitní kamera"
 
-#: ../gtk/parameters.ui.h:7
+#: ../gtk/parameters.ui.h:7 ../gtk/elophone_parameters.ui.h:7
 msgid "CIF"
 msgstr "CIF"
 
-#: ../gtk/parameters.ui.h:8
+#: ../gtk/parameters.ui.h:8 ../gtk/elophone_parameters.ui.h:8
 msgid "Audio codecs"
 msgstr "Kodeky zvuku"
 
-#: ../gtk/parameters.ui.h:9
+#: ../gtk/parameters.ui.h:9 ../gtk/elophone_parameters.ui.h:9
 msgid "Video codecs"
 msgstr "Kodeky obrazu"
 
-#: ../gtk/parameters.ui.h:10
+#: ../gtk/parameters.ui.h:10 ../gtk/elophone_parameters.ui.h:10
 msgid "C"
 msgstr "C"
 
-#: ../gtk/parameters.ui.h:11
-msgid "Settings"
-msgstr "Nastavení"
-
-#: ../gtk/parameters.ui.h:12
-msgid "Set Maximum Transmission Unit:"
-msgstr "Nastavit MTU (největší přenositelná zpráva):"
-
-#: ../gtk/parameters.ui.h:13
-msgid "Send DTMFs as SIP info"
-msgstr "Odesílat tóny DTMF jako SIP INFO zprávy"
-
-#: ../gtk/parameters.ui.h:14
-msgid "Allow IPv6"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:15
-msgid "<b>Transport</b>"
-msgstr "<b>Přenos</b>"
-
-#: ../gtk/parameters.ui.h:16
-msgid "SIP/UDP port"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:18
-msgid "Random"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:19
-msgid "SIP/TCP port"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:20
-msgid "Audio RTP/UDP:"
-msgstr "Zvukový RTP/UDP:"
-
-#: ../gtk/parameters.ui.h:21
-msgid "Fixed"
-msgstr "Stálý"
-
-#: ../gtk/parameters.ui.h:22
-msgid "Video RTP/UDP:"
-msgstr "Obrazový RTP/UDP:"
-
-#: ../gtk/parameters.ui.h:23
-msgid "Media encryption type"
-msgstr "Druh šifrování médií"
-
-#: ../gtk/parameters.ui.h:24
-msgid "Media encryption is mandatory"
-msgstr "Šifrování médií je povinné"
-
-#: ../gtk/parameters.ui.h:25
-msgid "Tunnel"
-msgstr "Tunel"
-
-#: ../gtk/parameters.ui.h:26
-msgid "DSCP fields"
-msgstr "Položky DSCP"
-
-#: ../gtk/parameters.ui.h:27
-msgid "<b>Network protocol and ports</b>"
-msgstr "<b>Síťové protokoly a porty</b>"
-
-#: ../gtk/parameters.ui.h:28
-msgid "Direct connection to the Internet"
-msgstr "Přímé připojení do Internetu"
-
-#: ../gtk/parameters.ui.h:29
-msgid "Behind NAT / Firewall (specify gateway IP )"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:30
-msgid "Behind NAT / Firewall (use STUN to resolve)"
-msgstr "Za NAT/firewallem (adresu určí STUN)"
-
-#: ../gtk/parameters.ui.h:31
-msgid "Behind NAT / Firewall (use ICE)"
-msgstr "Za NAT/firewallem (adresu určí ICE)"
-
-#: ../gtk/parameters.ui.h:32
-msgid "Behind NAT / Firewall (use uPnP)"
-msgstr "Za NAT/firewallem (adresu určí UPnP)"
-
-#: ../gtk/parameters.ui.h:33
-msgid "Public IP address:"
-msgstr "Veřejná IP adresa:"
-
-#: ../gtk/parameters.ui.h:34
-msgid "Stun server:"
-msgstr "STUN server:"
-
-#: ../gtk/parameters.ui.h:35
-msgid "<b>NAT and Firewall</b>"
-msgstr "<b>NAT a firewall</b>"
-
-#: ../gtk/parameters.ui.h:36
-msgid "Network settings"
-msgstr "Nastavení sítě"
-
-#: ../gtk/parameters.ui.h:37
-msgid "Ring sound:"
-msgstr "Vyzvánění:"
-
-#: ../gtk/parameters.ui.h:38
-msgid "ALSA special device (optional):"
-msgstr "Zvláštní ALSA zařízení (volitelné):"
-
-#: ../gtk/parameters.ui.h:39
-msgid "Capture device:"
-msgstr "Zařízení pro nahrávání:"
-
-#: ../gtk/parameters.ui.h:40
-msgid "Ring device:"
-msgstr "Zařízení pro vyzvánění:"
-
-#: ../gtk/parameters.ui.h:41
-msgid "Playback device:"
-msgstr "Zařízení pro přehrávání:"
-
-#: ../gtk/parameters.ui.h:42
-msgid "Enable echo cancellation"
-msgstr "Zapnout potlačení ozvěny"
-
-#: ../gtk/parameters.ui.h:43
-msgid "<b>Audio</b>"
-msgstr "<b>Zvuk</b>"
-
-#: ../gtk/parameters.ui.h:44
-msgid "Video input device:"
-msgstr "Vstupní zařízení obrazu:"
-
-#: ../gtk/parameters.ui.h:45
-msgid "Prefered video resolution:"
-msgstr "Upřednostňované rozlišení obrazu:"
-
-#: ../gtk/parameters.ui.h:46
-msgid "Video output method:"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:47
-msgid "Show camera preview"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:48
-msgid "<b>Video</b>"
-msgstr "<b>Obraz</b>"
-
-#: ../gtk/parameters.ui.h:49
-msgid "Multimedia settings"
-msgstr "Nastavení multimédií"
-
-#: ../gtk/parameters.ui.h:50
-msgid "This section defines your SIP address when not using a SIP account"
-msgstr "Tento oddíl určuje vaši SIP adresu, když se nepoužívá žádný účet"
-
-#: ../gtk/parameters.ui.h:51
-msgid "Your display name (eg: John Doe):"
-msgstr "Vaše zobrazované jméno (např. Jan Novák):"
-
-#: ../gtk/parameters.ui.h:52
-msgid "Your username:"
-msgstr "Vaše uživatelské jméno:"
-
-#: ../gtk/parameters.ui.h:53
-msgid "Your resulting SIP address:"
-msgstr "Vaše výsledná SIP adresa:"
-
-#: ../gtk/parameters.ui.h:54
-msgid "<b>Default identity</b>"
-msgstr "<b>Implicitní totožnost</b>"
-
-#: ../gtk/parameters.ui.h:55
-msgid "Wizard"
-msgstr "Průvodce"
-
-#: ../gtk/parameters.ui.h:56
-msgid "Add"
-msgstr "Přidat"
-
-#: ../gtk/parameters.ui.h:57
-msgid "Edit"
-msgstr "Upravit"
-
-#: ../gtk/parameters.ui.h:58
-msgid "Remove"
-msgstr "Odstranit"
-
-#: ../gtk/parameters.ui.h:59
-msgid "<b>Proxy accounts</b>"
-msgstr "<b>Proxy účty</b>"
-
-#: ../gtk/parameters.ui.h:60
-msgid "Erase all passwords"
-msgstr "Vymazat všechna hesla"
-
-#: ../gtk/parameters.ui.h:61
-msgid "<b>Privacy</b>"
-msgstr "<b>Soukromí</b>"
-
-#: ../gtk/parameters.ui.h:62
-msgid "Automatically answer when a call is received"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:63
-msgid "<b>Auto-answer</b>"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:64
-msgid "Manage SIP Accounts"
-msgstr "Nastavení SIP účtů"
-
-#: ../gtk/parameters.ui.h:65 ../gtk/tunnel_config.ui.h:4
-msgid "Enable"
-msgstr "Povolit"
-
-#: ../gtk/parameters.ui.h:66 ../gtk/tunnel_config.ui.h:5
-msgid "Disable"
-msgstr "Zakázat"
-
-#: ../gtk/parameters.ui.h:67
-msgid "<b>Codecs</b>"
-msgstr "<b>Kodeky</b>"
-
-#: ../gtk/parameters.ui.h:68
-msgid "0 stands for \"unlimited\""
-msgstr "0 znamená „neomezeno“"
-
-#: ../gtk/parameters.ui.h:69
-msgid "Upload speed limit in Kbit/sec:"
-msgstr "Omezení odchozí rychlosti (kb/s):"
-
-#: ../gtk/parameters.ui.h:70
-msgid "Download speed limit in Kbit/sec:"
-msgstr "Omezení příchozí rychlosti (kb/s):"
-
-#: ../gtk/parameters.ui.h:71
-msgid "Enable adaptive rate control"
-msgstr "Zapnout přizpůsobující se řízení rychlosti"
-
-#: ../gtk/parameters.ui.h:72
-msgid ""
-"<i>Adaptive rate control is a technique to dynamically guess the available "
-"bandwidth during a call.</i>"
-msgstr "<i>Přizpůsobující se řízení rychlosti je technika dynamického odhadu dostupného pásma během hovoru.</i>"
-
-#: ../gtk/parameters.ui.h:73
-msgid "<b>Bandwidth control</b>"
-msgstr "<b>Využití šířky pásma</b>"
-
-#: ../gtk/parameters.ui.h:74
-msgid "Codecs"
-msgstr "Kodeky"
-
-#: ../gtk/parameters.ui.h:75
-msgid "<b>Language</b>"
-msgstr "<b>Jazyk</b>"
-
-#: ../gtk/parameters.ui.h:76
-msgid "Show advanced settings"
-msgstr "Zobrazit podrobnější nastavení"
-
-#: ../gtk/parameters.ui.h:77
-msgid "<b>Level</b>"
-msgstr "<b>Úroveň</b>"
-
-#: ../gtk/parameters.ui.h:78
-msgid "User interface"
-msgstr "Uživatelské rozhraní"
-
-#: ../gtk/parameters.ui.h:79 ../gtk/ldap.ui.h:2
-msgid "Server address:"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:80 ../gtk/ldap.ui.h:3
-msgid "Authentication method:"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:82
-msgid "<b>LDAP Account setup</b>"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:83
-msgid "LDAP"
-msgstr ""
-
-#: ../gtk/parameters.ui.h:84
-msgid "Done"
-msgstr "Hotovo"
-
-#: ../gtk/parameters.ui.h:85
+#: ../gtk/parameters.ui.h:11 ../gtk/elophone_parameters.ui.h:11
 msgid "SIP (UDP)"
 msgstr "SIP (UDP)"
 
-#: ../gtk/parameters.ui.h:86
+#: ../gtk/parameters.ui.h:12 ../gtk/elophone_parameters.ui.h:12
 msgid "SIP (TCP)"
 msgstr "SIP (TCP)"
 
-#: ../gtk/parameters.ui.h:87
+#: ../gtk/parameters.ui.h:13 ../gtk/elophone_parameters.ui.h:13
 msgid "SIP (TLS)"
 msgstr "SIP (TLS)"
+
+#: ../gtk/parameters.ui.h:14 ../gtk/elophone_parameters.ui.h:14
+msgid "Settings"
+msgstr "Nastavení"
+
+#: ../gtk/parameters.ui.h:15 ../gtk/elophone_parameters.ui.h:15
+msgid "Set Maximum Transmission Unit:"
+msgstr "Nastavit MTU (největší přenositelná zpráva):"
+
+#: ../gtk/parameters.ui.h:16 ../gtk/elophone_parameters.ui.h:16
+msgid "Send DTMFs as SIP info"
+msgstr "Odesílat tóny DTMF jako SIP INFO zprávy"
+
+#: ../gtk/parameters.ui.h:17 ../gtk/elophone_parameters.ui.h:17
+msgid "Allow IPv6"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:18 ../gtk/elophone_parameters.ui.h:18
+msgid "<b>Transport</b>"
+msgstr "<b>Přenos</b>"
+
+#: ../gtk/parameters.ui.h:19 ../gtk/elophone_parameters.ui.h:66
+msgid "SIP/UDP port"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:21 ../gtk/elophone_parameters.ui.h:68
+msgid "Random"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:22 ../gtk/elophone_parameters.ui.h:69
+msgid "SIP/TCP port"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:23 ../gtk/elophone_parameters.ui.h:70
+msgid "Audio RTP/UDP:"
+msgstr "Zvukový RTP/UDP:"
+
+#: ../gtk/parameters.ui.h:24 ../gtk/elophone_parameters.ui.h:71
+msgid "Fixed"
+msgstr "Stálý"
+
+#: ../gtk/parameters.ui.h:25 ../gtk/elophone_parameters.ui.h:72
+msgid "Video RTP/UDP:"
+msgstr "Obrazový RTP/UDP:"
+
+#: ../gtk/parameters.ui.h:26 ../gtk/elophone_parameters.ui.h:73
+msgid "Media encryption type"
+msgstr "Druh šifrování médií"
+
+#: ../gtk/parameters.ui.h:27 ../gtk/elophone_parameters.ui.h:74
+msgid "Media encryption is mandatory"
+msgstr "Šifrování médií je povinné"
+
+#: ../gtk/parameters.ui.h:28 ../gtk/elophone_parameters.ui.h:75
+msgid "Tunnel"
+msgstr "Tunel"
+
+#: ../gtk/parameters.ui.h:29 ../gtk/elophone_parameters.ui.h:76
+msgid "DSCP fields"
+msgstr "Položky DSCP"
+
+#: ../gtk/parameters.ui.h:30 ../gtk/elophone_parameters.ui.h:78
+msgid "<b>Network protocol and ports</b>"
+msgstr "<b>Síťové protokoly a porty</b>"
+
+#: ../gtk/parameters.ui.h:31 ../gtk/elophone_parameters.ui.h:19
+msgid "Direct connection to the Internet"
+msgstr "Přímé připojení do Internetu"
+
+#: ../gtk/parameters.ui.h:32 ../gtk/elophone_parameters.ui.h:20
+msgid "Behind NAT / Firewall (specify gateway IP )"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:33 ../gtk/elophone_parameters.ui.h:21
+msgid "Behind NAT / Firewall (use STUN to resolve)"
+msgstr "Za NAT/firewallem (adresu určí STUN)"
+
+#: ../gtk/parameters.ui.h:34 ../gtk/elophone_parameters.ui.h:22
+msgid "Behind NAT / Firewall (use ICE)"
+msgstr "Za NAT/firewallem (adresu určí ICE)"
+
+#: ../gtk/parameters.ui.h:35 ../gtk/elophone_parameters.ui.h:23
+msgid "Behind NAT / Firewall (use uPnP)"
+msgstr "Za NAT/firewallem (adresu určí UPnP)"
+
+#: ../gtk/parameters.ui.h:36 ../gtk/elophone_parameters.ui.h:24
+msgid "Public IP address:"
+msgstr "Veřejná IP adresa:"
+
+#: ../gtk/parameters.ui.h:37 ../gtk/elophone_parameters.ui.h:25
+msgid "Stun server:"
+msgstr "STUN server:"
+
+#: ../gtk/parameters.ui.h:38 ../gtk/elophone_parameters.ui.h:26
+msgid "<b>NAT and Firewall</b>"
+msgstr "<b>NAT a firewall</b>"
+
+#: ../gtk/parameters.ui.h:39 ../gtk/elophone_parameters.ui.h:27
+msgid "Network settings"
+msgstr "Nastavení sítě"
+
+#: ../gtk/parameters.ui.h:40 ../gtk/elophone_parameters.ui.h:79
+msgid "Ring sound:"
+msgstr "Vyzvánění:"
+
+#: ../gtk/parameters.ui.h:41 ../gtk/elophone_parameters.ui.h:80
+msgid "ALSA special device (optional):"
+msgstr "Zvláštní ALSA zařízení (volitelné):"
+
+#: ../gtk/parameters.ui.h:42 ../gtk/elophone_parameters.ui.h:81
+msgid "Capture device:"
+msgstr "Zařízení pro nahrávání:"
+
+#: ../gtk/parameters.ui.h:43 ../gtk/elophone_parameters.ui.h:82
+msgid "Ring device:"
+msgstr "Zařízení pro vyzvánění:"
+
+#: ../gtk/parameters.ui.h:44 ../gtk/elophone_parameters.ui.h:83
+msgid "Playback device:"
+msgstr "Zařízení pro přehrávání:"
+
+#: ../gtk/parameters.ui.h:45 ../gtk/elophone_parameters.ui.h:84
+msgid "Enable echo cancellation"
+msgstr "Zapnout potlačení ozvěny"
+
+#: ../gtk/parameters.ui.h:46 ../gtk/elophone_parameters.ui.h:85
+msgid "<b>Audio</b>"
+msgstr "<b>Zvuk</b>"
+
+#: ../gtk/parameters.ui.h:47 ../gtk/elophone_parameters.ui.h:28
+msgid "Video input device:"
+msgstr "Vstupní zařízení obrazu:"
+
+#: ../gtk/parameters.ui.h:48 ../gtk/elophone_parameters.ui.h:29
+msgid "Prefered video resolution:"
+msgstr "Upřednostňované rozlišení obrazu:"
+
+#: ../gtk/parameters.ui.h:49 ../gtk/elophone_parameters.ui.h:30
+msgid "Video output method:"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:50 ../gtk/elophone_parameters.ui.h:31
+msgid "Show camera preview"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:51 ../gtk/elophone_parameters.ui.h:32
+msgid "<b>Video</b>"
+msgstr "<b>Obraz</b>"
+
+#: ../gtk/parameters.ui.h:52 ../gtk/elophone_parameters.ui.h:33
+msgid "Multimedia settings"
+msgstr "Nastavení multimédií"
+
+#: ../gtk/parameters.ui.h:53 ../gtk/elophone_parameters.ui.h:34
+msgid "This section defines your SIP address when not using a SIP account"
+msgstr "Tento oddíl určuje vaši SIP adresu, když se nepoužívá žádný účet"
+
+#: ../gtk/parameters.ui.h:54 ../gtk/elophone_parameters.ui.h:35
+msgid "Your display name (eg: John Doe):"
+msgstr "Vaše zobrazované jméno (např. Jan Novák):"
+
+#: ../gtk/parameters.ui.h:55 ../gtk/elophone_parameters.ui.h:36
+msgid "Your username:"
+msgstr "Vaše uživatelské jméno:"
+
+#: ../gtk/parameters.ui.h:56 ../gtk/elophone_parameters.ui.h:37
+msgid "Your resulting SIP address:"
+msgstr "Vaše výsledná SIP adresa:"
+
+#: ../gtk/parameters.ui.h:57 ../gtk/elophone_parameters.ui.h:38
+msgid "<b>Default identity</b>"
+msgstr "<b>Implicitní totožnost</b>"
+
+#: ../gtk/parameters.ui.h:58 ../gtk/elophone_parameters.ui.h:39
+msgid "Wizard"
+msgstr "Průvodce"
+
+#: ../gtk/parameters.ui.h:59 ../gtk/elophone_parameters.ui.h:40
+msgid "Add"
+msgstr "Přidat"
+
+#: ../gtk/parameters.ui.h:60 ../gtk/elophone_parameters.ui.h:41
+msgid "Edit"
+msgstr "Upravit"
+
+#: ../gtk/parameters.ui.h:61 ../gtk/elophone_parameters.ui.h:42
+msgid "Remove"
+msgstr "Odstranit"
+
+#: ../gtk/parameters.ui.h:62 ../gtk/elophone_parameters.ui.h:43
+msgid "<b>Proxy accounts</b>"
+msgstr "<b>Proxy účty</b>"
+
+#: ../gtk/parameters.ui.h:63 ../gtk/elophone_parameters.ui.h:44
+msgid "Erase all passwords"
+msgstr "Vymazat všechna hesla"
+
+#: ../gtk/parameters.ui.h:64 ../gtk/elophone_parameters.ui.h:45
+msgid "<b>Privacy</b>"
+msgstr "<b>Soukromí</b>"
+
+#: ../gtk/parameters.ui.h:65 ../gtk/elophone_parameters.ui.h:86
+msgid "Automatically answer when a call is received"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:66 ../gtk/elophone_parameters.ui.h:87
+msgid "Delay before answering (ms)"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:67 ../gtk/elophone_parameters.ui.h:88
+msgid "<b>Auto-answer</b>"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:68 ../gtk/elophone_parameters.ui.h:46
+msgid "Manage SIP Accounts"
+msgstr "Nastavení SIP účtů"
+
+#: ../gtk/parameters.ui.h:69 ../gtk/tunnel_config.ui.h:4
+#: ../gtk/elophone_parameters.ui.h:47
+msgid "Enable"
+msgstr "Povolit"
+
+#: ../gtk/parameters.ui.h:70 ../gtk/tunnel_config.ui.h:5
+#: ../gtk/elophone_parameters.ui.h:48
+msgid "Disable"
+msgstr "Zakázat"
+
+#: ../gtk/parameters.ui.h:71 ../gtk/elophone_parameters.ui.h:49
+msgid "<b>Codecs</b>"
+msgstr "<b>Kodeky</b>"
+
+#: ../gtk/parameters.ui.h:72 ../gtk/elophone_parameters.ui.h:50
+msgid "0 stands for \"unlimited\""
+msgstr "0 znamená „neomezeno“"
+
+#: ../gtk/parameters.ui.h:73 ../gtk/elophone_parameters.ui.h:51
+msgid "Upload speed limit in Kbit/sec:"
+msgstr "Omezení odchozí rychlosti (kb/s):"
+
+#: ../gtk/parameters.ui.h:74 ../gtk/elophone_parameters.ui.h:52
+msgid "Download speed limit in Kbit/sec:"
+msgstr "Omezení příchozí rychlosti (kb/s):"
+
+#: ../gtk/parameters.ui.h:75 ../gtk/elophone_parameters.ui.h:53
+msgid "Enable adaptive rate control"
+msgstr "Zapnout přizpůsobující se řízení rychlosti"
+
+#: ../gtk/parameters.ui.h:76 ../gtk/elophone_parameters.ui.h:54
+msgid ""
+"<i>Adaptive rate control is a technique to dynamically guess the available "
+"bandwidth during a call.</i>"
+msgstr ""
+"<i>Přizpůsobující se řízení rychlosti je technika dynamického odhadu "
+"dostupného pásma během hovoru.</i>"
+
+#: ../gtk/parameters.ui.h:77 ../gtk/elophone_parameters.ui.h:55
+msgid "<b>Bandwidth control</b>"
+msgstr "<b>Využití šířky pásma</b>"
+
+#: ../gtk/parameters.ui.h:78 ../gtk/elophone_parameters.ui.h:56
+msgid "Codecs"
+msgstr "Kodeky"
+
+#: ../gtk/parameters.ui.h:79 ../gtk/elophone_parameters.ui.h:57
+msgid "<b>Language</b>"
+msgstr "<b>Jazyk</b>"
+
+#: ../gtk/parameters.ui.h:80 ../gtk/elophone_parameters.ui.h:58
+msgid "Show advanced settings"
+msgstr "Zobrazit podrobnější nastavení"
+
+#: ../gtk/parameters.ui.h:81 ../gtk/elophone_parameters.ui.h:59
+msgid "<b>Level</b>"
+msgstr "<b>Úroveň</b>"
+
+#: ../gtk/parameters.ui.h:82 ../gtk/elophone_parameters.ui.h:60
+msgid "User interface"
+msgstr "Uživatelské rozhraní"
+
+#: ../gtk/parameters.ui.h:83 ../gtk/ldap.ui.h:2
+#: ../gtk/elophone_parameters.ui.h:61
+msgid "Server address:"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:84 ../gtk/ldap.ui.h:3
+#: ../gtk/elophone_parameters.ui.h:62
+msgid "Authentication method:"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:86 ../gtk/elophone_parameters.ui.h:64
+msgid "<b>LDAP Account setup</b>"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:87 ../gtk/elophone_parameters.ui.h:65
+msgid "LDAP"
+msgstr ""
+
+#: ../gtk/parameters.ui.h:88
+msgid "Done"
+msgstr "Hotovo"
 
 #: ../gtk/buddylookup.ui.h:1
 msgid "Search contacts in directory"
@@ -1687,8 +1717,11 @@ msgstr ""
 
 #: ../gtk/config-uri.ui.h:2
 msgid ""
-"This dialog allows to set an http or https address when configuration is to be fetched at startup.\n"
-"Please enter or modify the configuration URI below. After clicking OK, Linphone will restart automatically in order to fetch and take into account the new configuration. "
+"This dialog allows to set an http or https address when configuration is to "
+"be fetched at startup.\n"
+"Please enter or modify the configuration URI below. After clicking OK, "
+"Linphone will restart automatically in order to fetch and take into account "
+"the new configuration. "
 msgstr ""
 
 #: ../gtk/provisioning-fetch.ui.h:1
@@ -1699,60 +1732,72 @@ msgstr ""
 msgid "Please wait while fetching configuration from server..."
 msgstr ""
 
-#: ../coreapi/linphonecore.c:1534
+#: ../gtk/elophone_about.ui.h:1
+msgid "About Elophone"
+msgstr ""
+
+#: ../gtk/elophone_about.ui.h:2
+msgid "(C) Eloquant, 2015\n"
+msgstr ""
+
+#: ../gtk/elophone_parameters.ui.h:89
+msgid "Save"
+msgstr ""
+
+#: ../coreapi/linphonecore.c:1538
 msgid "Ready"
 msgstr "Připraven."
 
-#: ../coreapi/linphonecore.c:2534
+#: ../coreapi/linphonecore.c:2547
 msgid "Configuring"
 msgstr ""
 
-#: ../coreapi/linphonecore.c:2708
+#: ../coreapi/linphonecore.c:2721
 msgid "Looking for telephone number destination..."
 msgstr "Vyhledává se umístění čísla…"
 
-#: ../coreapi/linphonecore.c:2710
+#: ../coreapi/linphonecore.c:2723
 msgid "Could not resolve this number."
 msgstr "Toto číslo nelze vyhledat."
 
 #. must be known at that time
-#: ../coreapi/linphonecore.c:2996
+#: ../coreapi/linphonecore.c:3009
 msgid "Contacting"
 msgstr "Navazuje se spojení"
 
-#: ../coreapi/linphonecore.c:3001
+#: ../coreapi/linphonecore.c:3014
 msgid "Could not call"
 msgstr "Nelze volat"
 
-#: ../coreapi/linphonecore.c:3152
+#: ../coreapi/linphonecore.c:3165
 msgid "Sorry, we have reached the maximum number of simultaneous calls"
 msgstr "Je nám líto, ale byl dosažen maximální počet současných hovorů."
 
-#: ../coreapi/linphonecore.c:3310
+#: ../coreapi/linphonecore.c:3323
 msgid "is contacting you"
 msgstr "vás volá"
 
-#: ../coreapi/linphonecore.c:3311
+#: ../coreapi/linphonecore.c:3324
 msgid " and asked autoanswer."
 msgstr " a požaduje automatickou zvednutí."
 
-#: ../coreapi/linphonecore.c:3435
+#: ../coreapi/linphonecore.c:3448
 msgid "Modifying call parameters..."
 msgstr "Upravují se parametry hovoru…"
 
-#: ../coreapi/linphonecore.c:3782
+#: ../coreapi/linphonecore.c:3795
 msgid "Connected."
 msgstr "Připojeno."
 
-#: ../coreapi/linphonecore.c:3807
+#: ../coreapi/linphonecore.c:3820
 msgid "Call aborted"
 msgstr "Hovor přerušen"
 
-#: ../coreapi/linphonecore.c:3997
+#: ../coreapi/linphonecore.c:4010
 msgid "Could not pause the call"
 msgstr "Hovor nebylo možné odložit"
 
-#: ../coreapi/linphonecore.c:4000
+#: ../coreapi/linphonecore.c:4013
 msgid "Pausing the current call..."
 msgstr "Současný hovor se odkládá…"
 
@@ -1820,15 +1865,19 @@ msgstr ""
 msgid ""
 "The sip proxy address you entered is invalid, it must start with \"sip:\" "
 "followed by a hostname."
-msgstr "Adresa SIP proxy, kterou jste zadali, není platná. Musí začínat na „sip:“ a pak musí následovat jméno stroje."
+msgstr ""
+"Adresa SIP proxy, kterou jste zadali, není platná. Musí začínat na „sip:“ a "
+"pak musí následovat jméno stroje."
 
 #: ../coreapi/proxy.c:334
 msgid ""
 "The sip identity you entered is invalid.\n"
 "It should look like sip:username@proxydomain, such as sip:alice@example.net"
-msgstr "SIP identita, kterou jste zadali, není platná.\nMěla by mít tvar sip:uživatel@proxydoména, například sip:alice@example.net"
+msgstr ""
+"SIP identita, kterou jste zadali, není platná.\n"
+"Měla by mít tvar sip:uživatel@proxydoména, například sip:alice@example.net"
 
-#: ../coreapi/proxy.c:1416
+#: ../coreapi/proxy.c:1434
 #, c-format
 msgid "Could not login as %s"
 msgstr "Nelze se přihlásit jako %s"
@@ -1994,3 +2043,14 @@ msgstr ""
 #, c-format
 msgid "Cannot play %s."
 msgstr ""
+
+#~ msgid ""
+#~ "%s would like to add you to his contact list.\n"
+#~ "Would you allow him to see your presence status or add him to your "
+#~ "contact list ?\n"
+#~ "If you answer no, this person will be temporarily blacklisted."
+#~ msgstr ""
+#~ "%s si vás chce přidat do svého adresáře.\n"
+#~ "Dovolíte mu, aby viděl váš stav přítomnosti, nebo si ho také chcete "
+#~ "přidat do svého adresáře?\n"
+#~ "Odpovíte-li ne, tato osobo bude dočasně blokována."
