@@ -55,7 +55,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <locale.h>
 #endif
 
-
+#include <assert.h>
 
 const char *this_program_ident_string="linphone_ident_string=" LINPHONE_VERSION;
 
@@ -1459,15 +1459,43 @@ static void update_registration_status(LinphoneProxyConfig *cfg, LinphoneRegistr
 	gtk_list_store_set(GTK_LIST_STORE(model),&iter,1,stock_id,-1);
 }
 
+static void elophone_format_phone_number(const char *user_name, char *formated_phone_number, size_t length) {
+	int i = 0, j = 0;
+	assert(length > 0);
+	if(length == 1) goto end;
+	while(user_name[i] != '\0' && j != length - 1) {
+		if(i % 2 == 0 && i != 0) {
+			if(j == length - 2) break;
+			formated_phone_number[j] = ' ';
+			formated_phone_number[j+1] = user_name[i];
+			j+=2;
+		} else {
+			formated_phone_number[j] = user_name[i];
+			j++;
+		}
+		i++;
+	}
+	
+end:
+	formated_phone_number[j] = '\0';
+}
+
 static void linphone_gtk_registration_state_changed(LinphoneCore *lc, LinphoneProxyConfig *cfg,
                                                     LinphoneRegistrationState rs, const char *msg){
 	switch (rs){
 		case LinphoneRegistrationOk:
 			if (cfg){
+				char long_title[100];
+				char phone_num[15];
+				const char *title = linphone_gtk_get_ui_config("title", "Linphone");
+				LinphoneAddress *identity = linphone_address_new(linphone_proxy_config_get_identity(cfg));
 				SipSetup *ss=linphone_proxy_config_get_sip_setup(cfg);
 				if (ss && (sip_setup_get_capabilities(ss) & SIP_SETUP_CAP_LOGIN)){
 					linphone_gtk_exit_login_frame();
 				}
+				elophone_format_phone_number(linphone_address_get_username(identity), phone_num, 15);
+				g_snprintf(long_title, 256, "%s - %s", title, phone_num);
+				gtk_window_set_title(GTK_WINDOW(the_ui), long_title);
 			}
 		break;
 		default:
