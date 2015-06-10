@@ -14,17 +14,17 @@ media_encryption=srtp
 
 [proxy_0]
 type=SipLogin
-reg_proxy=<sip:212.99.5.164;transport=tls>
-reg_route=<sip:212.99.5.164;transport=tls>
-reg_identity=sip:?@212.99.5.164
+reg_proxy=<sip:212.99.5.27;transport=tls>
+reg_route=<sip:212.99.5.27;transport=tls>
+reg_identity=sip:?@212.99.5.27
 reg_expires=3600
 reg_sendregister=1
 
 [proxy_1]
 type=SipLogin
-reg_proxy=<sip:83.145.97.91;transport=tls>
-reg_route=<sip:83.145.97.91;transport=tls>
-reg_identity=sip:?@83.145.97.91
+reg_proxy=<sip:82.138.78.9;transport=tls>
+reg_route=<sip:82.138.78.9;transport=tls>
+reg_identity=sip:?@82.138.78.9
 reg_expires=3600
 reg_sendregister=1
 
