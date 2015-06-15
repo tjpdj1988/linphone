@@ -35,7 +35,7 @@ max_calls=1
 mime=opus
 rate=48000
 channels=2
-enabled=0
+enabled=1
 
 [audio_codec_1]
 mime=speex
