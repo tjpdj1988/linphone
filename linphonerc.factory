@@ -78,3 +78,10 @@ mime=AMR
 rate=8000
 channels=1
 enabled=1
+
+[audio_codec_8]
+mime=AMR-WB
+rate=16000
+channels=1
+enabled=1
+
