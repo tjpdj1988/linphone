@@ -68,4 +68,9 @@ if(ENABLE_GTK_UI)
 	)
 endif()
 
+install(FILES linphonerc.factory
+	DESTINATION ${PACKAGE_DATA_DIR}/linphone
+	PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+)
+
 add_subdirectory(rings)
