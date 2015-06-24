@@ -27,7 +27,7 @@ find_package(GTK2 2.18 REQUIRED gtk)
 find_package(Intl REQUIRED)
 
 set(UI_FILES
-	about.ui
+	elophone_about.ui
 	audio_assistant.ui
 	buddylookup.ui
 	call_logs.ui
@@ -38,13 +38,14 @@ set(UI_FILES
 	keypad.ui
 	ldap.ui
 	log.ui
-	main.ui
-	parameters.ui
+	elophone_main.ui
+	elophone_parameters.ui
 	password.ui
 	provisioning-fetch.ui
 	sip_account.ui
 	tunnel_config.ui
 	waiting.ui
+	elophone_menu.ui
 )
 
 set(PIXMAPS stock_people.png)
