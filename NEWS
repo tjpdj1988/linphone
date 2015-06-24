@@ -1,3 +1,21 @@
+linphone-3.8.4 -- June 9th, 2015
+	* Add a built-in XMLRPC client. Linphone does not depend on libsoup anymore
+
+linphone-3.8.3 -- June 4th, 2015
+	* Fix status icons on all platforms (Windows, MacOS, non-KDE Linux desktop environment)
+
+linphone-3.8.2 -- May 7th, 2015
+	Application level improvements:
+	* add support of the StatusNotifierItem standard to display a status icon on KDE5
+	* auto-answering can be set through the preferences panel
+	* bug fixes
+	
+	Liblinphone level improvements:
+	* fix audio bug with opus codec
+	* fix ICE corner case not properly handled and resulting bad final ice status
+	* update SO version to 7 (it should have been done in 3.8.0)
+	* bug fixes
+
 linphone-3.8.1 -- March 31th, 2015
 	Application level improvements:
 	* Auto-answer ability

@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT([elophone],[3.8.1],[linphone-developers@nongnu.org])
+AC_INIT([linphone],[3.8.4],[linphone-developers@nongnu.org])
 AC_CANONICAL_SYSTEM
 AC_CONFIG_SRCDIR([coreapi/linphonecore.c])
 
@@ -17,7 +17,7 @@ if test "$LINPHONE_EXTRA_VERSION" != "" ;then
 	LINPHONE_VERSION=$LINPHONE_VERSION.${LINPHONE_EXTRA_VERSION}
 fi
 
-LIBLINPHONE_SO_CURRENT=6 dnl increment this number when you add/change/remove an interface
+LIBLINPHONE_SO_CURRENT=7 dnl increment this number when you add/change/remove an interface
 LIBLINPHONE_SO_REVISION=0 dnl increment this number when you change source code, without changing interfaces; set to 0 when incrementing CURRENT
 LIBLINPHONE_SO_AGE=0 dnl increment this number when you add an interface, set to 0 if you remove an interface
 
@@ -347,9 +347,13 @@ if test "$gtk_ui" = "true" ; then
 		fi
 		AC_DEFINE([HAVE_GTK_OSX],[1],[Defined when gtk osx is used])
 	fi
+
+	PKG_CHECK_MODULES(LIBGLIB, [glib-2.0 >= 2.26.0], [build_status_notifier=yes], [build_status_notifier=no])
 else
 	echo "GTK interface compilation is disabled."
 fi
+
+AM_CONDITIONAL([BUILD_STATUS_NOTIFIER], [test "$build_status_notifier" = "yes"])
 
 AC_ARG_ENABLE(notify,
 	[AS_HELP_STRING([--enable-notify=[yes/no]], [Enable libnotify support (default=yes)])],
@@ -725,43 +729,6 @@ if test "$has_sighandler_t" = "yes" ; then
 	AC_DEFINE( HAVE_SIGHANDLER_T, 1, [Define if sighandler_t available] )
 fi
 
-AC_ARG_ENABLE(assistant,
-	[AS_HELP_STRING([--enable-assistant], [Turn on assistant compiling])],
-	[case "${enableval}" in
-		yes)	build_wizard=true ;;
-		no)	build_wizard=false ;;
-		*)	AC_MSG_ERROR(bad value ${enableval} for --enable-assistant) ;;
-	esac],
-	[build_wizard=false]
-)
-
-dnl check libsoup (needed for wizard)
-if test "$build_wizard" != "false" ; then
-	PKG_CHECK_MODULES(LIBSOUP, [libsoup-2.4 >= 2.26],[],
-		[if test "$build_wizard" = "true" ; then
-			AC_MSG_ERROR([Could not found libsoup, assistant cannot be compiled.])
-		else
-			build_wizard=false
-		fi]
-	)
-fi
-if test "$build_wizard" != "false" ; then
-	PKG_CHECK_MODULES(LIBGTKWIZARD, [gtk+-2.0 >= 2.22.0],[],
-		[if test "$build_wizard" = "true" ; then
-			AC_MSG_ERROR([gtk+-2.0 < 2.22.0, assistant cannot be compiled.])
-		else
-			build_wizard=false
-		fi]
-	)
-fi
-AC_SUBST(LIBSOUP_CFLAGS)
-AC_SUBST(LIBSOUP_LIBS)
-AM_CONDITIONAL(BUILD_WIZARD, test x$build_wizard != xfalse)
-if test "$build_wizard" != "false" ; then
-	build_wizard=true
-	 AC_DEFINE(BUILD_WIZARD, 1, [Define if wizard enabled] )
-fi
-
 AC_CHECK_HEADERS(libudev.h)
 AC_CHECK_LIB(udev,udev_new)
 
@@ -1015,7 +982,20 @@ dnl ##################################################
 dnl # Check for doxygen
 dnl ##################################################
 
-AC_CHECK_PROG(DOXYGEN,doxygen,doxygen,false)
+AC_ARG_ENABLE(doxygen,
+	[AS_HELP_STRING([--disable-documentation], [Disable documentation generation using doxygen (default=no)])],
+	[case "${enableval}" in
+		yes)	documentation_enabled=yes;;
+		no)		documentation_enabled=no;;
+		*)		AC_MSG_ERROR("Bad value for --disable-documentation");;
+	esac],
+	[documentation_enabled=yes]
+)
+if test "$documentation_enabled" = "yes" ; then
+	AC_CHECK_PROG(DOXYGEN,doxygen,doxygen,false)
+else
+	DOXYGEN=false
+fi
 AM_CONDITIONAL(HAVE_DOXYGEN, test "$DOXYGEN" != "false")
 
 
@@ -1024,6 +1004,7 @@ AC_CONFIG_FILES([
 	build/Makefile
 	build/macos/Makefile
 	build/macos/Info-linphone.plist
+	build/macos/pkg-distribution.xml
 	m4/Makefile
 	po/Makefile.in
 	pixmaps/Makefile
@@ -1056,7 +1037,6 @@ echo "Linphone build configuration ended."
 echo "Summary of build options:"
 printf "* %-30s %s\n" "Video support"		$video
 printf "* %-30s %s\n" "GTK interface"		$gtk_ui
-printf "* %-30s %s\n" "Account assistant"	$build_wizard
 printf "* %-30s %s\n" "Console interface"	$console_ui
 printf "* %-30s %s\n" "Tools"			$build_tools
 printf "* %-30s %s\n" "Message storage"		$enable_msg_storage

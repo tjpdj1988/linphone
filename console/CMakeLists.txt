@@ -1,5 +1,5 @@
 ############################################################################
-# FindSoup.cmake
+# CMakeLists.txt
 # Copyright (C) 2014  Belledonne Communications, Grenoble France
 #
 ############################################################################
@@ -19,47 +19,35 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ############################################################################
-#
-# - Find the soup include file and library
-#
-#  SOUP_FOUND - system has libsoup
-#  SOUP_INCLUDE_DIRS - the libsoup include directory
-#  SOUP_LIBRARIES - The libraries needed to use libsoup
+
+set(LINPHONEC_SOURCE_FILES
+	linphonec.c
+	linphonec.h
+	commands.c
+)
+set(LINPHONECSH_SOURCE_FILES
+	shell.c
+)
+
+add_executable(linphonec ${LINPHONEC_SOURCE_FILES})
+target_link_libraries(linphonec linphone)
 
 if(WIN32)
-	set(GTK2_ADDITIONAL_SUFFIXES "../lib/glib-2.0/include" "../lib/gtk-2.0/include")
-endif()
-find_package(GTK2 2.18 REQUIRED gtk)
-
-set(_SOUP_ROOT_PATHS
-	${CMAKE_INSTALL_PREFIX}
-)
-
-find_path(SOUP_INCLUDE_DIRS
-	NAMES libsoup/soup.h
-	HINTS _SOUP_ROOT_PATHS
-	PATH_SUFFIXES include/libsoup-2.4
-)
-
-if(SOUP_INCLUDE_DIRS)
-	set(HAVE_LIBSOUP_SOUP_H 1)
-	list(APPEND SOUP_INCLUDE_DIRS ${GTK2_INCLUDE_DIRS})
+	add_executable(linphoned WIN32 ${LINPHONEC_SOURCE_FILES})
+	target_link_libraries(linphoned linphone)
 endif()
 
-find_library(SOUP_LIBRARIES
-	NAMES soup-2.4
-	HINTS ${_SOUP_ROOT_PATHS}
-	PATH_SUFFIXES bin lib
-)
+add_executable(linphonecsh ${LINPHONECSH_SOURCE_FILES})
+target_link_libraries(linphonecsh linphone)
 
-if(SOUP_LIBRARIES)
-	list(APPEND SOUP_LIBRARIES ${GTK2_LIBRARIES})
+set(INSTALL_TARGETS linphonec linphonecsh)
+if(WIN32)
+	list(APPEND INSTALL_TARGETS linphoned)
 endif()
 
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(Soup
-	DEFAULT_MSG
-	SOUP_INCLUDE_DIRS SOUP_LIBRARIES HAVE_LIBSOUP_SOUP_H
+install(TARGETS ${INSTALL_TARGETS}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+	PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
-
-mark_as_advanced(SOUP_INCLUDE_DIRS SOUP_LIBRARIES HAVE_LIBSOUP_SOUP_H)

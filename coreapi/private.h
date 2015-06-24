@@ -227,7 +227,7 @@ struct _LinphoneCall{
 	LinphoneAddress *me; /*Either from or to based on call dir*/
 	SalOp *op;
 	SalOp *ping_op;
-	char localip[LINPHONE_IPADDR_SIZE]; /* our best guess for local ipaddress for this call */
+	char media_localip[LINPHONE_IPADDR_SIZE]; /* our best guess for local media ipaddress for this call */
 	LinphoneCallState state;
 	LinphoneCallState prevstate;
 	LinphoneCallState transfer_state; /*idle if no transfer*/
@@ -395,6 +395,7 @@ void linphone_core_adapt_to_network(LinphoneCore *lc, int ping_time_ms, Linphone
 int linphone_core_gather_ice_candidates(LinphoneCore *lc, LinphoneCall *call);
 void linphone_core_update_ice_state_in_call_stats(LinphoneCall *call);
 void linphone_call_stats_fill(LinphoneCallStats *stats, MediaStream *ms, OrtpEvent *ev);
+void linphone_call_stop_ice_for_inactive_streams(LinphoneCall *call);
 void _update_local_media_description_from_ice(SalMediaDescription *desc, IceSession *session);
 void linphone_call_update_local_media_description_from_ice_or_upnp(LinphoneCall *call);
 void linphone_call_update_ice_from_remote_media_description(LinphoneCall *call, const SalMediaDescription *md);
@@ -413,8 +414,6 @@ void linphone_core_get_local_ip(LinphoneCore *lc, int af, const char *dest, char
 
 LinphoneProxyConfig *linphone_proxy_config_new_from_config_file(LinphoneCore *lc, int index);
 void linphone_proxy_config_write_to_config_file(struct _LpConfig* config,LinphoneProxyConfig *obj, int index);
-
-bool_t linphone_proxy_config_normalize_number(LinphoneProxyConfig *cfg, const char *username, char *result, size_t result_len);
 
 void linphone_core_message_received(LinphoneCore *lc, SalOp *op, const SalMessage *msg);
 void linphone_core_is_composing_received(LinphoneCore *lc, SalOp *op, const SalIsComposing *is_composing);
@@ -552,6 +551,8 @@ BELLE_SIP_DECLARE_VPTR(LinphoneChatRoom);
 
 
 struct _LinphoneFriend{
+	belle_sip_object_t base;
+	void *user_data;
 	LinphoneAddress *uri;
 	SalOp *insub;
 	SalOp *outsub;
@@ -560,13 +561,14 @@ struct _LinphoneFriend{
 	struct _LinphoneCore *lc;
 	BuddyInfo *info;
 	char *refkey;
-	void *up;
 	bool_t subscribe;
 	bool_t subscribe_active;
 	bool_t inc_subscribe_pending;
 	bool_t commit;
 	bool_t initial_subscribes_sent; /*used to know if initial subscribe message was sent or not*/
 };
+
+BELLE_SIP_DECLARE_VPTR(LinphoneFriend);
 
 
 typedef struct sip_config
@@ -776,7 +778,7 @@ struct _LinphoneCore
 	char* user_certificates_path;
 	LinphoneVideoPolicy video_policy;
 	time_t network_last_check;
-	
+
 	bool_t use_files;
 	bool_t apply_nat_settings;
 	bool_t initial_subscribes_sent;
@@ -786,7 +788,7 @@ struct _LinphoneCore
 	bool_t auto_net_state_mon;
 	bool_t network_reachable;
 	bool_t network_reachable_to_be_notified; /*set to true when state must be notified in next iterate*/
-	
+
 	bool_t use_preview_window;
 	bool_t network_last_status;
 	bool_t ringstream_autorelease;
@@ -855,6 +857,7 @@ int linphone_core_get_calls_nb(const LinphoneCore *lc);
 
 void linphone_core_set_state(LinphoneCore *lc, LinphoneGlobalState gstate, const char *message);
 void linphone_call_make_local_media_description(LinphoneCore *lc, LinphoneCall *call);
+void linphone_call_make_local_media_description_with_params(LinphoneCore *lc, LinphoneCall *call, LinphoneCallParams *params);
 void linphone_call_increment_local_media_description(LinphoneCall *call);
 void linphone_core_update_streams(LinphoneCore *lc, LinphoneCall *call, SalMediaDescription *new_md);
 
@@ -977,6 +980,42 @@ BELLE_SIP_DECLARE_VPTR(LinphoneBuffer);
 
 
 /*****************************************************************************
+ * XML-RPC interface                                                         *
+ ****************************************************************************/
+
+typedef struct _LinphoneXmlRpcArg {
+	LinphoneXmlRpcArgType type;
+	union {
+		int i;
+		char *s;
+	} data;
+} LinphoneXmlRpcArg;
+
+struct _LinphoneXmlRpcRequest {
+	belle_sip_object_t base;
+	void *user_data;
+	belle_sip_list_t *arg_list;
+	char *content;	/**< The string representation of the XML-RPC request */
+	char *method;
+	LinphoneXmlRpcResponseCb cb;
+	void *cb_ud;
+	LinphoneXmlRpcStatus status;
+	LinphoneXmlRpcArg response;
+};
+
+BELLE_SIP_DECLARE_VPTR(LinphoneXmlRpcRequest);
+
+struct _LinphoneXmlRpcSession {
+	belle_sip_object_t base;
+	void *user_data;
+	LinphoneCore *core;
+	char *url;
+};
+
+BELLE_SIP_DECLARE_VPTR(LinphoneXmlRpcSession);
+
+
+/*****************************************************************************
  * REMOTE PROVISIONING FUNCTIONS                                                     *
  ****************************************************************************/
 
@@ -1079,7 +1118,10 @@ BELLE_SIP_TYPE_ID(LinphoneChatRoom),
 BELLE_SIP_TYPE_ID(LinphoneContent),
 BELLE_SIP_TYPE_ID(LinphoneLDAPContactProvider),
 BELLE_SIP_TYPE_ID(LinphoneLDAPContactSearch),
-BELLE_SIP_TYPE_ID(LinphoneProxyConfig)
+BELLE_SIP_TYPE_ID(LinphoneProxyConfig),
+BELLE_SIP_TYPE_ID(LinphoneFriend),
+BELLE_SIP_TYPE_ID(LinphoneXmlRpcRequest),
+BELLE_SIP_TYPE_ID(LinphoneXmlRpcSession)
 BELLE_SIP_DECLARE_TYPES_END
 
 

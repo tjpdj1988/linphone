@@ -20,7 +20,7 @@
 #
 ############################################################################
 
-if(MSVC)
+if(MSVC AND NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "WindowsPhone")
 	find_library(LIBGCC NAMES gcc)
 	find_library(LIBMINGWEX NAMES mingwex)
 endif()
@@ -31,6 +31,8 @@ endif()
 
 
 set(SOURCE_FILES
+	account_creator.c
+	account_creator.h
 	address.c
 	authentication.c
 	bellesip_sal/sal_address_impl.c
@@ -92,6 +94,8 @@ set(SOURCE_FILES
 	xml2lpc.c
 	xml2lpc.h
 	xml.c
+	xmlrpc.c
+	xmlrpc.h
 	vtables.c
 )
 if(ENABLE_TUNNEL)
@@ -102,9 +106,6 @@ if(ENABLE_TUNNEL)
 	add_definitions(-DTUNNEL_ENABLED)
 else()
 	list(APPEND SOURCE_FILES linphone_tunnel_stubs.c)
-endif()
-if(ENABLE_ASSISTANT)
-	list(APPEND SOURCE_FILES sipwizard.c)
 endif()
 
 set(GENERATED_SOURCE_FILES
@@ -121,8 +122,6 @@ add_definitions(
 )
 
 set(LIBS
-	${LIBGCC}
-	${LIBMINGWEX}
 	${BELLESIP_LIBRARIES}
 	${MEDIASTREAMER2_LIBRARIES}
 	${XML2_LIBRARIES}
@@ -139,8 +138,8 @@ endif()
 if(ENABLE_TUNNEL)
 	list(APPEND LIBS ${TUNNEL_LIBRARIES})
 endif()
-if(ENABLE_ASSISTANT)
-	list(APPEND LIBS ${SOUP_LIBRARIES})
+if(MSVC AND NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "WindowsPhone")
+	list(APPEND LIBS ${LIBGCC} ${LIBMINGWEX})
 endif()
 if(WIN32 AND NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "WindowsPhone")
 	list(APPEND LIBS shlwapi)
@@ -166,7 +165,12 @@ if(WIN32 AND "${CMAKE_SYSTEM_NAME}" STREQUAL "WindowsPhone")
 	set_target_properties(linphone PROPERTIES PREFIX "lib")
 endif()
 if(ICONV_FOUND)
-	target_include_directories(linphone PUBLIC ${ICONV_INCLUDE_DIRS})
+	if(APPLE)
+		# Prevent conflict between the system iconv.h header and the one from macports.
+		target_compile_options(linphone PRIVATE "-include" "${ICONV_INCLUDE_DIRS}/iconv.h")
+	else()
+		target_include_directories(linphone PRIVATE ${ICONV_INCLUDE_DIRS})
+	endif()
 endif()
 
 install(TARGETS linphone EXPORT LinphoneTargets
@@ -199,4 +203,6 @@ install(FILES ${HEADER_FILES}
 	PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
 )
 
-add_subdirectory(help)
+if(ENABLE_DOC)
+	add_subdirectory(help)
+endif()
