@@ -1219,11 +1219,18 @@ void linphone_proxy_config_set_custom_header(LinphoneProxyConfig *cfg, const cha
 	cfg->sent_headers=sal_custom_header_append(cfg->sent_headers, header_name, header_value);
 }
 
+static int proxy_config_identitry_compare(const LinphoneProxyConfig *cfg1, const LinphoneProxyConfig *cfg2){
+	if(cfg1==cfg2)
+	    return 0;
+
+    return strcmp(cfg1->reg_identity,cfg2->reg_identity);
+}
+
 int linphone_core_add_proxy_config(LinphoneCore *lc, LinphoneProxyConfig *cfg){
 	if (!linphone_proxy_config_check(lc,cfg)) {
 		return -1;
 	}
-	if (ms_list_find(lc->sip_conf.proxies,cfg)!=NULL){
+	if (ms_list_find_custom(lc->sip_conf.proxies, (int (*)(const void*, const void*))proxy_config_identitry_compare, cfg)!=NULL){
 		ms_warning("ProxyConfig already entered, ignored.");
 		return 0;
 	}
