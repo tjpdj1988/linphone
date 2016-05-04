@@ -729,6 +729,7 @@ struct _LinphoneFriendList {
 	MSList *dirty_friends_to_update;
 	int revision;
 	LinphoneFriendListCbs *cbs;
+	bool_t enable_subscriptions;
 };
 
 BELLE_SIP_DECLARE_VPTR(LinphoneFriendList);
@@ -1275,6 +1276,7 @@ struct _LinphoneCardDavContext {
 	LinphoneCardDavContactUpdatedCb contact_updated_cb;
 	LinphoneCardDavContactRemovedCb contact_removed_cb;
 	LinphoneCardDavSynchronizationDoneCb sync_done_cb;
+	LinphoneAuthInfo *auth_info;
 };
 
 struct _LinphoneCardDavQuery {
@@ -1290,7 +1292,6 @@ struct _LinphoneCardDavQuery {
 };
 
 struct _LinphoneCardDavResponse {
-	LinphoneCardDavContext *context;
 	const char *etag;
 	const char *url;
 	const char *vcard;

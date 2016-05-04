@@ -263,6 +263,10 @@ bool_t transport_supported(LinphoneTransportType transport) {
 	return supported;
 }
 
+#if __clang__ || ((__GNUC__ == 4 && __GNUC_MINOR__ >= 6) || __GNUC__ > 4)
+#pragma GCC diagnostic push
+#endif
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 void linphone_core_manager_init(LinphoneCoreManager *mgr, const char* rc_file) {
 	char *rc_path = NULL;
 	char *hellopath = bc_tester_res("sounds/hello8000.wav");
@@ -334,6 +338,9 @@ void linphone_core_manager_init(LinphoneCoreManager *mgr, const char* rc_file) {
 
 	if (rc_path) ms_free(rc_path);
 }
+#if __clang__ || ((__GNUC__ == 4 && __GNUC_MINOR__ >= 6) || __GNUC__ > 4)
+#pragma GCC diagnostic pop
+#endif
 
 void linphone_core_manager_start(LinphoneCoreManager *mgr, int check_for_proxies) {
 	LinphoneProxyConfig* proxy;
@@ -473,9 +480,11 @@ void liblinphone_tester_add_suites() {
 	bc_tester_add_suite(&tunnel_test_suite);
 	bc_tester_add_suite(&offeranswer_test_suite);
 	bc_tester_add_suite(&call_test_suite);
+	bc_tester_add_suite(&audio_bypass_suite);
 	bc_tester_add_suite(&multi_call_test_suite);
 	bc_tester_add_suite(&message_test_suite);
 	bc_tester_add_suite(&presence_test_suite);
+	bc_tester_add_suite(&presence_server_test_suite);
 #ifdef UPNP
 	bc_tester_add_suite(&upnp_test_suite);
 #endif
